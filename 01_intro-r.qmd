@@ -1,9 +1,6 @@
 ---
 title: "Getting Started with R(Studio)"
 date: "2024-06-20"
-format: 
-  revealjs:
-    theme: dc-ldev.scss
 ---
 
 ```{r}

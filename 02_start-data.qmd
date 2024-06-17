@@ -1,7 +1,6 @@
 ---
 title: "Starting with Data"
-date: 2024-06-20
-date-modified: today
+date: "2024-06-20"
 ---
 
 ```{r}
@@ -13,7 +12,7 @@ library(forcats)
 interviews <- readr::read_csv(here("data/SAFI_clean.csv"), na = "NULL")
 ```
 
-## Objectives {auto-animate="true"}
+## Objectives {.center}
 
 - Describe what a data frame is.
 - Load external data from a .csv file into a data frame.
@@ -26,7 +25,7 @@ interviews <- readr::read_csv(here("data/SAFI_clean.csv"), na = "NULL")
 - Examine and change date formats.
 
 
-## Objectives {auto-animate="true" .center}
+## Objectives {.center}
 
 - Describe what a data frame is.
 
@@ -40,8 +39,9 @@ It's a table...
 
 ## Data frames and tibbles {.center}
 
-Data frames can contain multiple data types, but each column must only contain
-one type.
+Data frames can contain multiple data types.
+
+Each column in a data frame must only contain one type.
 
 A tibble is a type of data frame used by the 📦{tidyverse} packages.
 
@@ -74,7 +74,7 @@ or
 
 depending on your OS. These are **absolute paths**.
 
-## Relative file paths {.smaller}
+## Relative file paths
 
 :::: {.columns}
 
@@ -156,7 +156,7 @@ memb_assoc <- factor(memb_assoc, levels = c("No", "Yes", "Undetermined"))
 plot(memb_assoc)
 ```
 
-## Objectives (again)
+## Objectives {.center}
 
 - Describe what a data frame is.
 - Load external data from a .csv file into a data frame.
