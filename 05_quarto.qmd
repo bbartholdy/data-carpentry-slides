@@ -1,0 +1,61 @@
+---
+title: "Getting Started with Quarto"
+date: '2024-06-21'
+---
+
+## What is Quarto? {.smaller}
+
+Quarto is a free, open-source scientific and tecnical publishing system.
+
+Quarto allows you to **seamlessly combine executable R code, its output, and text** in a single document.
+
+These documents **can be converted to multiple static and dynamic output formats**, including PDF (.pdf), Word (.docx), and HTML (.html).
+
+The benefit of a well-prepared Quarto document is **full reproducibility**.
+
+[![Artwork by [@allison_horst](https://twitter.com/allison_horst)](https://raw.githubusercontent.com/allisonhorst/stats-illustrations/master/rstats-artwork/reproducibility_court.png)](https://github.com/allisonhorst/stats-illustrations){height=250 fig-alt="A judge’s desk labeled 'Reproducibility' with a witness stand right next to it. On the witness stand is a smiling and confident R Markdown document pointing at some lines of code on itself. A fuzzy monster lawyer in a polka-dot tie stands proudly saying 'Nothing further!' The judge (also a cute fuzzy monster) is smiling with their hands raised in celebration of reproducible work."}
+
+
+## Why Quarto?
+
+Full reproducibility also means
+
+- flexibility to add data and recompile
+- no need to change all occurrences in a document
+- easily fix mistakes made during analysis...
+
+. . .
+
+![*GIPHY*](https://media.giphy.com/media/BxWTWalKTUAdq/giphy.gif)
+
+
+## Quarto Exercises {.center .inverse}
+
+
+## Exercise 1 {.inverse}
+
+⏰ **4 mins**
+
+Play around with the different options in the chunk with the code for the table,
+and re-Render to see what each option does to the output.
+
+What happens if you use `eval: false` and `echo: false`? 
+
+What is the difference between this and `include: false`?
+
+`r countdown::countdown(minutes = 4, color_running_background  = "lightgreen", color_running_text = "black", color_finished_background = "red", color_finished_text =  "grey30")`
+
+## Exercise 1: Solution {.inverse}
+
+Create a chunk with `eval: false, echo: false`
+
+then create another chunk with `include: false` to compare. 
+
+`eval: false, echo: false` will neither run the code in the chunk, nor show the
+code in the rendered document. The code chunk essentially doesn’t exist in the
+rendered document...
+
+...whereas `include: false` will run the code and store the output for later use.
+
+See a comprehensive list of chunk options [here](https://quarto.org/docs/reference/formats/html.html#execution)
+

@@ -1,0 +1,15 @@
+/*-- scss:defaults --*/
+
+// colours
+
+$body-color: #191919;
+$presentation-heading-color: #00A6D6;
+$presentation-font-size-root: 38px;
+$dark-bg-code-color: #d600a6;
+$dark-bg-link-color: #a6d600;
+
+/*-- scss:rules --*/
+
+.reveal .inverse {
+    background-color: #00A6D6;
+}

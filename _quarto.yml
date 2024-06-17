@@ -1,0 +1,10 @@
+subtitle: Data Carpentry for Social Sciences and Humanities
+format: 
+  revealjs: 
+    navigation-mode: vertical
+    theme: dc-ldev.scss
+    df-print: paged
+execute: 
+  warning: false
+  echo: true
+  message: false
