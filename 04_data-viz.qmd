@@ -20,6 +20,7 @@ percent_items <- interviews_plotting |>
     pivot_longer(bicycle:no_listed_items, names_to = "items", values_to = "percent")
 ```
 
+
 ## Why ggplot2?
 
 ...because these are 'base' plots
@@ -46,6 +47,7 @@ boxplot(rooms ~ village,
 
 :::
 ::::
+
 
 ## Why ggplot2?
 
@@ -133,6 +135,7 @@ interviews_plotting %>%
 :::
 ::::
 
+
 ## ggplot2 {.center}
 
 ![](https://raw.githubusercontent.com/tidyverse/ggplot2/master/pkgdown/favicon/apple-touch-icon-120x120.png){.absolute height="120" right="0" top="-38"}
@@ -158,10 +161,11 @@ minimal effort.
 More artwork by [Allison Horst](https://allisonhorst.com)
 :::
 
-## Data Visualisation Exercises {.center .inverse}
+
+# Data Visualisation Exercises {.center .inverse}
 
 
-## Exercise 2 {.inverse}
+## Exercise 1 {.inverse}
 
 ⏰ **6 mins**
 
@@ -177,7 +181,7 @@ What other kinds of plots might you use to show this type of data?
 `r countdown::countdown(minutes = 6, color_running_background  = "lightgreen", color_running_text = "black", color_finished_background = "red", color_finished_text =  "grey30")`
 
 
-## Exercise 2: Solution {.inverse .smaller}
+## Exercise 1: Solution {.inverse .smaller}
 
 ```{r exercise-2-setup, echo=FALSE}
 #| label: setup-exercise2
@@ -236,7 +240,7 @@ interviews_plotting %>%
 ```
 
 
-## Exercise 3 {.inverse}
+## Exercise 2 {.inverse}
 
 ⏰ **4 mins**
 
@@ -249,7 +253,7 @@ see `geom_violin()`
 `r countdown::countdown(minutes = 4, color_running_background  = "lightgreen", color_running_text = "black", color_finished_background = "red", color_finished_text =  "grey30")`
 
 
-## Exercise 3: Solution {.inverse}
+## Exercise 2: Solution {.inverse}
 
 ```{r exercise-3-sol, fig.width=9, fig.height=3.5, fig.retina=3}
 interviews_plotting %>%
@@ -260,7 +264,7 @@ interviews_plotting %>%
 
 
 
-## Exercise 4 {.inverse auto-animate="true"}
+## Exercise 3 {.inverse auto-animate="true"}
 
 ⏰ **8 mins**
 
@@ -273,7 +277,7 @@ Which village had the lowest proportion of respondents in an irrigation associat
 
 `r countdown::countdown(minutes = 8, color_running_background  = "lightgreen", color_running_text = "black", color_finished_background = "red", color_finished_text =  "grey30")`
 
-## Exercise 4 {.inverse .smaller auto-animate="true"}
+## Exercise 3 {.inverse .smaller auto-animate="true"}
 
 ⏰ **8 mins**
 
@@ -299,7 +303,7 @@ percent_memb_assoc <- interviews_plotting %>%
 ```
 
 
-## Exercise 4: Solution {.inverse}
+## Exercise 3: Solution {.inverse}
 
 ```{r exercise-4-sol, fig.width=7, fig.height=2.5, fig.retina=3}
 #| echo: true
@@ -316,7 +320,7 @@ percent_memb_assoc %>%
 ```
 
 
-## Exercise 5 {.inverse}
+## Exercise 4 {.inverse}
 
 ⏰ **4 mins**
 
@@ -344,7 +348,7 @@ Which do you like best?
 :::
 ::::
 
-## Exercise 5: Solution {.inverse}
+## Exercise 4: Solution {.inverse}
 
 ::: {.r-stack}
 

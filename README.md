@@ -10,7 +10,7 @@ git clone git@github.com:bbartholdy/data-carpentry-slides.git
 
 1. Create a new branch (e.g. 2406-DC-LDEV)
 2. Modify the slide *.qmd* files, and remove those not needed
-3. Commit with a tag and create a new release
+3. Commit with a tag and create a new release from the branch
 
 If there are major changes to slides, this should be done to the main
 branch (e.g., changes to the Data Carpentry materials).
