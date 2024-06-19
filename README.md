@@ -8,11 +8,26 @@ on 20-21 June, hosted by the VU.
 - Data Visualisation with ggplot2 ([slides](https://bbartholdy.github.io/data-carpentry-slides/04_data-viz.html), [source file download](/04_data-viz.qmd))
 - Getting Started with Quarto ([slides](https://bbartholdy.github.io/data-carpentry-slides/05_quarto.html), [source file download](/05_quarto.qmd))
 
-## Download
+## Usage
+
+Download the repository
 
 ```sh
 git clone -b 2406-DC-LDEV git@github.com:bbartholdy/data-carpentry-slides.git
 ```
+
+Restore packages
+
+```r
+renv::init()
+```
+
+Render slides
+
+```sh
+quarto render <slides file>.qmd
+```
+or use the Render button in RStudio.
 
 ## Licenses
 
