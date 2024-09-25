@@ -6,7 +6,7 @@ engine: knitr
 
 ## What is Quarto? {.smaller}
 
-Quarto is a free, open-source scientific and tecnical publishing system.
+Quarto is a free, open-source scientific and technical publishing system.
 
 Quarto allows you to **seamlessly combine executable R code, its output, and text** in a single document.
 
