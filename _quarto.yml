@@ -1,3 +1,6 @@
+project: 
+  type: website
+  
 subtitle: Data Carpentry for Social Sciences and Humanities
 format: 
   revealjs: 
