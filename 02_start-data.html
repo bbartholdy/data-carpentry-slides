@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-html/tabby.min.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.6.39">
+
+  <meta name="dcterms.date" content="2025-02-10">
+  <title>Starting with Data</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-9eb0c7512cd30db4bade84830ac54556.css">
+  <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+  <link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
+  <script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Starting with Data</h1>
+  <p class="subtitle">Data Carpentry for Social Sciences and Humanities</p>
+
+<div class="quarto-title-authors">
+</div>
+
+  <p class="date">2025-02-10</p>
+</section>
+<section id="objectives" class="slide level2 center">
+<h2>Objectives</h2>
+<ul>
+<li>Describe what a data frame is.</li>
+<li>Load external data from a .csv file into a data frame.</li>
+<li>Summarize the contents of a data frame.</li>
+<li>Subset values from data frames.</li>
+<li>Describe the difference between a factor and a string.</li>
+<li>Convert between strings and factors.</li>
+<li>Reorder and rename factors.</li>
+<li>Change how character strings are handled in a data frame.</li>
+<li>Examine and change date formats.</li>
+</ul>
+</section>
+<section id="objectives-1" class="slide level2 center">
+<h2>Objectives</h2>
+<ul>
+<li>Describe what a data frame is.</li>
+</ul>
+<p><span class="fragment">It’s a table…</span></p>
+</section>
+<section id="objectives-2" class="slide level2 center">
+<h2>Objectives</h2>
+<ul>
+<li>Describe what a data frame is. <span class="fragment">👍</span></li>
+</ul>
+<p>It’s a table…</p>
+</section>
+<section id="data-frames-and-tibbles" class="slide level2 center">
+<h2>Data frames and tibbles</h2>
+<p>Data frames can contain multiple data types.</p>
+<p>Each column in a data frame must only contain one type.</p>
+<p>A tibble is a type of data frame used by the 📦{tidyverse} packages.</p>
+</section>
+<section class="slide level2">
+
+<div class="cell">
+<div id="tbl-SAFI" class="cell quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-tbl">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-SAFI-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: The SAFI clean data.
+</figcaption>
+<div aria-describedby="tbl-SAFI-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["key_ID"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["village"],"name":[2],"type":["chr"],"align":["left"]},{"label":["interview_date"],"name":[3],"type":["dttm"],"align":["right"]},{"label":["no_membrs"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["years_liv"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["respondent_wall_type"],"name":[6],"type":["chr"],"align":["left"]},{"label":["rooms"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["memb_assoc"],"name":[8],"type":["chr"],"align":["left"]},{"label":["affect_conflicts"],"name":[9],"type":["chr"],"align":["left"]},{"label":["liv_count"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["items_owned"],"name":[11],"type":["chr"],"align":["left"]},{"label":["no_meals"],"name":[12],"type":["dbl"],"align":["right"]},{"label":["months_lack_food"],"name":[13],"type":["chr"],"align":["left"]},{"label":["instanceID"],"name":[14],"type":["chr"],"align":["left"]}],"data":[{"1":"1","2":"God","3":"2016-11-17","4":"3","5":"4","6":"muddaub","7":"1","8":"NA","9":"NA","10":"1","11":"bicycle;television;solar_panel;table","12":"2","13":"Jan","14":"uuid:ec241f2c-0609-46ed-b5e8-fe575f6cefef"},{"1":"1","2":"God","3":"2016-11-17","4":"7","5":"9","6":"muddaub","7":"1","8":"yes","9":"once","10":"3","11":"cow_cart;bicycle;radio;cow_plough;solar_panel;solar_torch;table;mobile_phone","12":"2","13":"Jan;Sept;Oct;Nov;Dec","14":"uuid:099de9c9-3e5e-427b-8452-26250e840d6e"},{"1":"3","2":"God","3":"2016-11-17","4":"10","5":"15","6":"burntbricks","7":"1","8":"NA","9":"NA","10":"1","11":"solar_torch","12":"2","13":"Jan;Feb;Mar;Oct;Nov;Dec","14":"uuid:193d7daf-9582-409b-bf09-027dd36f9007"},{"1":"4","2":"God","3":"2016-11-17","4":"7","5":"6","6":"burntbricks","7":"1","8":"NA","9":"NA","10":"2","11":"bicycle;radio;cow_plough;solar_panel;mobile_phone","12":"2","13":"Sept;Oct;Nov;Dec","14":"uuid:148d1105-778a-4755-aa71-281eadd4a973"},{"1":"5","2":"God","3":"2016-11-17","4":"7","5":"40","6":"burntbricks","7":"1","8":"NA","9":"NA","10":"4","11":"motorcyle;radio;cow_plough;mobile_phone","12":"2","13":"Aug;Sept;Oct;Nov","14":"uuid:2c867811-9696-4966-9866-f35c3e97d02d"},{"1":"6","2":"God","3":"2016-11-17","4":"3","5":"3","6":"muddaub","7":"1","8":"NA","9":"NA","10":"1","11":"NA","12":"2","13":"Aug;Sept;Oct","14":"uuid:daa56c91-c8e3-44c3-a663-af6a49a2ca70"},{"1":"7","2":"God","3":"2016-11-17","4":"6","5":"38","6":"muddaub","7":"1","8":"no","9":"never","10":"1","11":"motorcyle;cow_plough","12":"3","13":"Nov","14":"uuid:ae20a58d-56f4-43d7-bafa-e7963d850844"},{"1":"8","2":"Chirodzo","3":"2016-11-16","4":"12","5":"70","6":"burntbricks","7":"3","8":"yes","9":"never","10":"2","11":"motorcyle;bicycle;television;radio;cow_plough;solar_panel;solar_torch;table;fridge","12":"2","13":"Jan","14":"uuid:d6cee930-7be1-4fd9-88c0-82a08f90fb5a"},{"1":"9","2":"Chirodzo","3":"2016-11-16","4":"8","5":"6","6":"burntbricks","7":"1","8":"no","9":"never","10":"3","11":"television;solar_panel;solar_torch","12":"3","13":"Jan;Dec","14":"uuid:846103d2-b1db-4055-b502-9cd510bb7b37"},{"1":"10","2":"Chirodzo","3":"2016-12-16","4":"12","5":"23","6":"burntbricks","7":"5","8":"no","9":"never","10":"2","11":"cow_cart;motorcyle;bicycle;television;radio;cow_plough;solar_panel;solar_torch;table","12":"3","13":"Jan;Oct;Nov;Dec","14":"uuid:8f4e49bc-da81-4356-ae34-e0d794a23721"},{"1":"11","2":"God","3":"2016-11-21","4":"6","5":"20","6":"sunbricks","7":"1","8":"NA","9":"NA","10":"2","11":"radio;cow_plough","12":"2","13":"Oct;Nov","14":"uuid:d29b44e3-3348-4afc-aa4d-9eb34c89d483"},{"1":"12","2":"God","3":"2016-11-21","4":"7","5":"20","6":"burntbricks","7":"3","8":"yes","9":"never","10":"2","11":"cow_cart;bicycle;radio;cow_plough;table","12":"3","13":"Sept;Oct","14":"uuid:e6ee6269-b467-4e37-91fc-5e9eaf934557"},{"1":"13","2":"God","3":"2016-11-21","4":"6","5":"8","6":"burntbricks","7":"1","8":"no","9":"never","10":"3","11":"bicycle;radio;cow_plough;mobile_phone","12":"2","13":"Sept;Oct;Nov","14":"uuid:6c00c145-ee3b-409c-8c02-2c8d743b6918"},{"1":"14","2":"God","3":"2016-11-21","4":"10","5":"20","6":"burntbricks","7":"3","8":"NA","9":"NA","10":"3","11":"bicycle;radio;cow_plough;solar_panel;table;mobile_phone","12":"3","13":"June;July;Aug;Sept;Oct;Nov","14":"uuid:9b21467f-1116-4340-a3b1-1ab64f13c87d"},{"1":"15","2":"God","3":"2016-11-21","4":"5","5":"30","6":"sunbricks","7":"2","8":"yes","9":"once","10":"3","11":"bicycle;radio;cow_plough;solar_panel;table","12":"2","13":"Jan;Feb;Mar;Apr;May;June;July;Aug;Sept;Oct;Nov","14":"uuid:a837e545-ff86-4a1c-a1a5-6186804b985f"},{"1":"16","2":"God","3":"2016-11-24","4":"6","5":"47","6":"muddaub","7":"1","8":"NA","9":"NA","10":"4","11":"radio;cow_plough;solar_panel;solar_torch","12":"3","13":"Jan;Feb","14":"uuid:d17db52f-4b87-4768-b534-ea8f9704c565"},{"1":"17","2":"God","3":"2016-11-21","4":"8","5":"20","6":"sunbricks","7":"1","8":"NA","9":"NA","10":"1","11":"mobile_phone","12":"2","13":"Nov;Dec","14":"uuid:4707f3dc-df18-4348-9c2c-eec651e89b6b"},{"1":"18","2":"God","3":"2016-11-21","4":"4","5":"20","6":"muddaub","7":"1","8":"NA","9":"NA","10":"3","11":"bicycle;mobile_phone","12":"2","13":"Oct;Nov","14":"uuid:7ffe7bd1-a15c-420c-a137-e1f006c317a3"},{"1":"19","2":"God","3":"2016-11-21","4":"9","5":"23","6":"burntbricks","7":"2","8":"NA","9":"NA","10":"2","11":"bicycle;radio;cow_plough;solar_panel;solar_torch;mobile_phone","12":"3","13":"Oct;Nov;Dec","14":"uuid:e32f2dc0-0d05-42fb-8e21-605757ddf07d"},{"1":"20","2":"God","3":"2016-11-21","4":"6","5":"1","6":"burntbricks","7":"1","8":"NA","9":"NA","10":"1","11":"bicycle;cow_plough;solar_torch","12":"2","13":"Oct;Nov","14":"uuid:d1005274-bf52-4e79-8380-3350dd7c2bac"},{"1":"21","2":"God","3":"2016-11-21","4":"8","5":"20","6":"burntbricks","7":"1","8":"no","9":"never","10":"3","11":"NA","12":"2","13":"Jan;Feb;Mar;Oct;Nov;Dec","14":"uuid:6570a7d0-6a0b-452c-aa2e-922500e35749"},{"1":"22","2":"God","3":"2016-11-21","4":"4","5":"20","6":"muddaub","7":"1","8":"NA","9":"NA","10":"1","11":"radio","12":"2","13":"Jan;Feb;Mar;Apr;Aug;Sept;Oct;Nov;Dec","14":"uuid:a51c3006-8847-46ff-9d4e-d29919b8ecf9"},{"1":"23","2":"Ruaca","3":"2016-11-21","4":"10","5":"20","6":"burntbricks","7":"4","8":"NA","9":"NA","10":"3","11":"cow_cart;bicycle;television;radio;cow_plough;solar_panel;electricity;mobile_phone","12":"3","13":"none","14":"uuid:58b37b6d-d6cd-4414-8790-b9c68bca98de"},{"1":"24","2":"Ruaca","3":"2016-11-21","4":"6","5":"4","6":"burntbricks","7":"2","8":"no","9":"never","10":"3","11":"radio;table;sofa_set;mobile_phone","12":"2","13":"Nov;Dec","14":"uuid:661457d3-7e61-45e8-a238-7415e7548f82"},{"1":"25","2":"Ruaca","3":"2016-11-21","4":"11","5":"6","6":"burntbricks","7":"3","8":"no","9":"never","10":"2","11":"cow_cart;motorcyle;television;radio;cow_plough;solar_panel;solar_torch;table;sofa_set;mobile_phone","12":"2","13":"Jan;Feb;Oct","14":"uuid:45ed84c4-114e-4df0-9f5d-c800806c2bee"},{"1":"26","2":"Ruaca","3":"2016-11-21","4":"3","5":"20","6":"burntbricks","7":"2","8":"no","9":"never","10":"2","11":"radio;cow_plough;table;mobile_phone","12":"2","13":"none","14":"uuid:1c54ee24-22c4-4ee9-b1ad-42d483c08e2e"},{"1":"27","2":"Ruaca","3":"2016-11-21","4":"7","5":"36","6":"burntbricks","7":"2","8":"NA","9":"NA","10":"3","11":"bicycle;radio;cow_plough;solar_panel;solar_torch;mobile_phone","12":"3","13":"none","14":"uuid:3197cded-1fdc-4c0c-9b10-cfcc0bf49c4d"},{"1":"28","2":"Ruaca","3":"2016-11-21","4":"2","5":"2","6":"muddaub","7":"1","8":"no","9":"more_once","10":"1","11":"NA","12":"3","13":"Aug;Sept;Oct","14":"uuid:1de53318-a8cf-4736-99b1-8239f8822473"},{"1":"29","2":"Ruaca","3":"2016-11-21","4":"7","5":"10","6":"burntbricks","7":"2","8":"yes","9":"frequently","10":"1","11":"motorcyle;bicycle;radio;table;mobile_phone","12":"3","13":"Jan;Feb","14":"uuid:adcd7463-8943-4c67-b25f-f72311409476"},{"1":"30","2":"Ruaca","3":"2016-11-21","4":"7","5":"22","6":"muddaub","7":"2","8":"NA","9":"NA","10":"1","11":"bicycle;radio;mobile_phone","12":"2","13":"Jan;Feb","14":"uuid:59341ead-92be-45a9-8545-6edf9f94fdc6"},{"1":"31","2":"Ruaca","3":"2016-11-21","4":"3","5":"2","6":"muddaub","7":"1","8":"NA","9":"NA","10":"1","11":"NA","12":"3","13":"none","14":"uuid:cb06eb49-dd39-4150-8bbe-a599e074afe8"},{"1":"32","2":"Ruaca","3":"2016-11-21","4":"19","5":"69","6":"muddaub","7":"2","8":"yes","9":"more_once","10":"5","11":"cow_cart;motorcyle;radio;cow_plough;solar_panel;mobile_phone","12":"2","13":"none","14":"uuid:25597af3-cd79-449c-a48a-fb9aea6c48bf"},{"1":"33","2":"Ruaca","3":"2016-11-21","4":"8","5":"34","6":"muddaub","7":"1","8":"no","9":"more_once","10":"2","11":"cow_cart;lorry;motorcyle;sterio;cow_plough;solar_panel;mobile_phone","12":"2","13":"none","14":"uuid:0fbd2df1-2640-4550-9fbd-7317feaa4758"},{"1":"34","2":"Chirodzo","3":"2016-11-17","4":"8","5":"18","6":"burntbricks","7":"3","8":"yes","9":"more_once","10":"3","11":"television;radio;cow_plough;solar_panel;solar_torch;table;mobile_phone","12":"2","13":"Jan;Dec","14":"uuid:14c78c45-a7cc-4b2a-b765-17c82b43feb4"},{"1":"35","2":"Chirodzo","3":"2016-11-17","4":"5","5":"45","6":"muddaub","7":"1","8":"yes","9":"more_once","10":"2","11":"bicycle;cow_plough","12":"3","13":"Jan;Sept;Oct;Nov;Dec","14":"uuid:ff7496e7-984a-47d3-a8a1-13618b5683ce"},{"1":"36","2":"Chirodzo","3":"2016-11-17","4":"6","5":"23","6":"sunbricks","7":"1","8":"yes","9":"once","10":"3","11":"cow_cart;bicycle;radio;cow_plough;solar_panel;mobile_phone","12":"3","13":"none","14":"uuid:c90eade0-1148-4a12-8c0e-6387a36f45b1"},{"1":"37","2":"Chirodzo","3":"2016-11-17","4":"3","5":"8","6":"burntbricks","7":"1","8":"NA","9":"NA","10":"2","11":"bicycle;television;radio;cow_plough;solar_panel;solar_torch;mobile_phone","12":"3","13":"Jan;Nov;Dec","14":"uuid:408c6c93-d723-45ef-8dee-1b1bd3fe20cd"},{"1":"38","2":"God","3":"2016-11-17","4":"10","5":"19","6":"muddaub","7":"1","8":"yes","9":"never","10":"3","11":"bicycle;radio;cow_plough;solar_panel;table;mobile_phone","12":"3","13":"Nov","14":"uuid:81309594-ff58-4dc1-83a7-72af5952ee08"},{"1":"39","2":"God","3":"2016-11-17","4":"6","5":"22","6":"muddaub","7":"1","8":"NA","9":"NA","10":"1","11":"NA","12":"3","13":"Nov","14":"uuid:c0fb6310-55af-4831-ae3d-2729556c3285"},{"1":"40","2":"God","3":"2016-11-17","4":"9","5":"23","6":"burntbricks","7":"1","8":"yes","9":"never","10":"1","11":"bicycle;radio;cow_plough;solar_panel;table;mobile_phone","12":"3","13":"Sept;Oct;Nov","14":"uuid:c0b34854-eede-4e81-b183-ef58a45bfc34"},{"1":"41","2":"God","3":"2016-11-17","4":"7","5":"22","6":"muddaub","7":"1","8":"NA","9":"NA","10":"2","11":"motorcyle;bicycle;radio;cow_plough;table","12":"3","13":"Oct;Nov","14":"uuid:b3ba34d8-eea1-453d-bc73-c141bcbbc5e5"},{"1":"42","2":"God","3":"2016-11-17","4":"8","5":"8","6":"sunbricks","7":"1","8":"no","9":"never","10":"3","11":"mobile_phone","12":"3","13":"Jan;Nov;Dec","14":"uuid:e3a1dd8a-1bda-428c-a014-2b527f11ae64"},{"1":"43","2":"Chirodzo","3":"2016-11-17","4":"7","5":"29","6":"muddaub","7":"1","8":"no","9":"never","10":"2","11":"cow_plough;mobile_phone","12":"2","13":"Jan;Feb;Oct;Nov;Dec","14":"uuid:b4dff49f-ef27-40e5-a9d1-acf287b47358"},{"1":"44","2":"Chirodzo","3":"2016-11-17","4":"2","5":"6","6":"muddaub","7":"1","8":"NA","9":"NA","10":"3","11":"radio;solar_torch","12":"2","13":"Jan;Dec","14":"uuid:f9fadf44-d040-4fca-86c1-2835f79c4952"},{"1":"45","2":"Chirodzo","3":"2016-11-17","4":"9","5":"7","6":"muddaub","7":"1","8":"no","9":"never","10":"4","11":"motorcyle;bicycle;television;radio;cow_plough;solar_panel;solar_torch;table;mobile_phone","12":"3","13":"none","14":"uuid:e3554d22-35b1-4fb9-b386-dd5866ad5792"},{"1":"46","2":"Chirodzo","3":"2016-11-17","4":"10","5":"42","6":"burntbricks","7":"2","8":"no","9":"once","10":"2","11":"motorcyle;computer;television;sterio;solar_panel;solar_torch;table;mobile_phone","12":"2","13":"Sept;Oct;Nov","14":"uuid:35f297e0-aa5d-4149-9b7b-4965004cfc37"},{"1":"47","2":"Chirodzo","3":"2016-11-17","4":"2","5":"2","6":"muddaub","7":"1","8":"yes","9":"once","10":"1","11":"solar_torch;mobile_phone","12":"3","13":"none","14":"uuid:2d0b1936-4f82-4ec3-a3b5-7c3c8cd6cc2b"},{"1":"48","2":"Chirodzo","3":"2016-11-16","4":"7","5":"58","6":"muddaub","7":"1","8":"NA","9":"NA","10":"3","11":"radio","12":"3","13":"June;July;Aug;Sept;Oct;Nov","14":"uuid:e180899c-7614-49eb-a97c-40ed013a38a2"},{"1":"49","2":"Chirodzo","3":"2016-11-16","4":"6","5":"26","6":"burntbricks","7":"2","8":"NA","9":"NA","10":"2","11":"bicycle;radio;cow_plough;solar_panel;solar_torch;table;mobile_phone","12":"3","13":"Jan;Nov;Dec","14":"uuid:2303ebc1-2b3c-475a-8916-b322ebf18440"},{"1":"50","2":"Chirodzo","3":"2016-11-16","4":"6","5":"7","6":"muddaub","7":"1","8":"yes","9":"never","10":"1","11":"solar_torch","12":"2","13":"June;July;Aug;Sept;Oct;Nov;Dec","14":"uuid:4267c33c-53a7-46d9-8bd6-b96f58a4f92c"},{"1":"51","2":"Chirodzo","3":"2016-11-16","4":"5","5":"30","6":"muddaub","7":"1","8":"NA","9":"NA","10":"1","11":"radio","12":"3","13":"Oct;Nov","14":"uuid:18ac8e77-bdaf-47ab-85a2-e4c947c9d3ce"},{"1":"52","2":"Chirodzo","3":"2016-11-16","4":"11","5":"15","6":"burntbricks","7":"3","8":"no","9":"never","10":"3","11":"motorcyle;television;radio;cow_plough;solar_panel;mobile_phone","12":"3","13":"Aug;Sept;Oct;Nov","14":"uuid:6db55cb4-a853-4000-9555-757b7fae2bcf"},{"1":"21","2":"Chirodzo","3":"2016-11-16","4":"8","5":"16","6":"burntbricks","7":"3","8":"yes","9":"frequently","10":"2","11":"bicycle;radio;mobile_phone","12":"2","13":"Nov","14":"uuid:cc7f75c5-d13e-43f3-97e5-4f4c03cb4b12"},{"1":"54","2":"Chirodzo","3":"2016-11-16","4":"7","5":"15","6":"muddaub","7":"1","8":"no","9":"never","10":"1","11":"NA","12":"2","13":"Sept;Oct;Nov","14":"uuid:273ab27f-9be3-4f3b-83c9-d3e1592de919"},{"1":"55","2":"Chirodzo","3":"2016-11-16","4":"9","5":"23","6":"muddaub","7":"2","8":"NA","9":"NA","10":"1","11":"television;cow_plough;mobile_phone","12":"2","13":"Oct;Nov","14":"uuid:883c0433-9891-4121-bc63-744f082c1fa0"},{"1":"56","2":"Chirodzo","3":"2016-11-16","4":"12","5":"23","6":"burntbricks","7":"2","8":"yes","9":"never","10":"2","11":"motorcyle;bicycle;mobile_phone","12":"3","13":"none","14":"uuid:973c4ac6-f887-48e7-aeaf-4476f2cfab76"},{"1":"57","2":"Chirodzo","3":"2016-11-16","4":"4","5":"27","6":"burntbricks","7":"1","8":"no","9":"never","10":"1","11":"radio","12":"2","13":"none","14":"uuid:a7184e55-0615-492d-9835-8f44f3b03a71"},{"1":"58","2":"Chirodzo","3":"2016-11-16","4":"11","5":"45","6":"burntbricks","7":"3","8":"no","9":"never","10":"3","11":"motorcyle;bicycle;television;radio;cow_plough;solar_panel;mobile_phone","12":"2","13":"none","14":"uuid:a7a3451f-cd0d-4027-82d9-8dcd1234fcca"},{"1":"59","2":"Chirodzo","3":"2016-11-16","4":"2","5":"60","6":"muddaub","7":"3","8":"NA","9":"NA","10":"3","11":"NA","12":"2","13":"none","14":"uuid:1936db62-5732-45dc-98ff-9b3ac7a22518"},{"1":"60","2":"Chirodzo","3":"2016-11-16","4":"8","5":"15","6":"burntbricks","7":"2","8":"no","9":"never","10":"4","11":"cow_plough","12":"2","13":"none","14":"uuid:85465caf-23e4-4283-bb72-a0ef30e30176"},{"1":"61","2":"Chirodzo","3":"2016-11-16","4":"10","5":"14","6":"muddaub","7":"1","8":"yes","9":"more_once","10":"3","11":"cow_cart;motorcyle;bicycle;television;radio;cow_plough;solar_panel;table;mobile_phone","12":"3","13":"Jan;Feb;Dec","14":"uuid:2401cf50-8859-44d9-bd14-1bf9128766f2"},{"1":"62","2":"Chirodzo","3":"2016-11-16","4":"5","5":"5","6":"muddaub","7":"1","8":"NA","9":"NA","10":"1","11":"bicycle;radio;mobile_phone","12":"3","13":"Aug;Sept;Oct;Nov","14":"uuid:c6597ecc-cc2a-4c35-a6dc-e62c71b345d6"},{"1":"63","2":"Chirodzo","3":"2016-11-16","4":"4","5":"10","6":"muddaub","7":"1","8":"NA","9":"NA","10":"1","11":"NA","12":"3","13":"Jan;Oct;Nov;Dec","14":"uuid:86ed4328-7688-462f-aac7-d6518414526a"},{"1":"64","2":"Chirodzo","3":"2016-11-16","4":"6","5":"1","6":"muddaub","7":"1","8":"NA","9":"NA","10":"1","11":"bicycle;solar_torch;table;sofa_set;mobile_phone","12":"3","13":"Jan;Feb;Dec","14":"uuid:28cfd718-bf62-4d90-8100-55fafbe45d06"},{"1":"65","2":"Chirodzo","3":"2016-11-16","4":"8","5":"20","6":"burntbricks","7":"3","8":"no","9":"once","10":"3","11":"motorcyle;radio;cow_plough;table","12":"3","13":"Jan;Feb;Mar","14":"uuid:143f7478-0126-4fbc-86e0-5d324339206b"},{"1":"66","2":"Chirodzo","3":"2016-11-16","4":"10","5":"37","6":"burntbricks","7":"3","8":"yes","9":"frequently","10":"4","11":"cow_cart;motorcyle;bicycle;television;radio;cow_plough;solar_panel;solar_torch;mobile_phone","12":"3","13":"none","14":"uuid:a457eab8-971b-4417-a971-2e55b8702816"},{"1":"67","2":"Chirodzo","3":"2016-11-16","4":"5","5":"31","6":"burntbricks","7":"2","8":"no","9":"more_once","10":"4","11":"motorcyle;radio;cow_plough;solar_panel;mobile_phone","12":"3","13":"none","14":"uuid:6c15d667-2860-47e3-a5e7-7f679271e419"},{"1":"68","2":"Chirodzo","3":"2016-11-16","4":"8","5":"52","6":"burntbricks","7":"3","8":"no","9":"more_once","10":"3","11":"motorcyle;television;sterio;solar_panel;mobile_phone","12":"3","13":"none","14":"uuid:ef04b3eb-b47d-412e-9b09-4f5e08fc66f9"},{"1":"69","2":"Chirodzo","3":"2016-11-16","4":"4","5":"12","6":"muddaub","7":"1","8":"no","9":"more_once","10":"1","11":"bicycle;radio;solar_torch;mobile_phone","12":"3","13":"none","14":"uuid:f86933a5-12b8-4427-b821-43c5b039401d"},{"1":"70","2":"Chirodzo","3":"2016-11-16","4":"8","5":"25","6":"burntbricks","7":"2","8":"no","9":"more_once","10":"4","11":"cow_cart;bicycle;radio;cow_plough;solar_panel;mobile_phone","12":"2","13":"none","14":"uuid:1feb0108-4599-4bf9-8a07-1f5e66a50a0a"},{"1":"71","2":"Ruaca","3":"2016-11-18","4":"6","5":"14","6":"burntbricks","7":"1","8":"yes","9":"more_once","10":"3","11":"radio;cow_plough;mobile_phone","12":"2","13":"Aug;Sept;Oct;Nov","14":"uuid:761f9c49-ec93-4932-ba4c-cc7b78dfcef1"},{"1":"127","2":"Chirodzo","3":"2016-11-16","4":"4","5":"18","6":"burntbricks","7":"8","8":"NA","9":"NA","10":"1","11":"mobile_phone","12":"2","13":"Aug;Sept;Oct","14":"uuid:f6d04b41-b539-4e00-868a-0f62b427587d"},{"1":"133","2":"Ruaca","3":"2016-11-23","4":"5","5":"25","6":"burntbricks","7":"2","8":"no","9":"never","10":"5","11":"cow_cart;car;lorry;motorcyle;bicycle;television;sterio;cow_plough;solar_panel;solar_torch;electricity;table;sofa_set;mobile_phone;fridge","12":"3","13":"Jan;Oct;Nov","14":"uuid:429d279a-a519-4dcc-9f64-4673b0fd5d53"},{"1":"152","2":"Ruaca","3":"2016-11-24","4":"10","5":"16","6":"burntbricks","7":"1","8":"yes","9":"once","10":"3","11":"motorcyle;bicycle;radio;sterio;cow_plough;solar_panel;mobile_phone","12":"3","13":"none","14":"uuid:59738c17-1cda-49ee-a563-acd76f6bc487"},{"1":"153","2":"Ruaca","3":"2016-11-24","4":"5","5":"41","6":"burntbricks","7":"1","8":"NA","9":"NA","10":"1","11":"NA","12":"2","13":"Oct;Nov","14":"uuid:7e7961ca-fa1c-4567-9bfa-a02f876e4e03"},{"1":"155","2":"God","3":"2016-11-24","4":"4","5":"4","6":"burntbricks","7":"1","8":"NA","9":"NA","10":"1","11":"electricity","12":"2","13":"Jan;Sept;Oct;Nov;Dec","14":"uuid:77b3021b-a9d6-4276-aaeb-5bfcfd413852"},{"1":"178","2":"Ruaca","3":"2016-11-25","4":"5","5":"79","6":"burntbricks","7":"2","8":"yes","9":"frequently","10":"3","11":"radio;cow_plough;solar_panel;mobile_phone","12":"3","13":"none","14":"uuid:2186e2ec-f65a-47cc-9bc1-a0f36dd9591c"},{"1":"177","2":"God","3":"2016-11-25","4":"10","5":"13","6":"sunbricks","7":"1","8":"no","9":"more_once","10":"2","11":"motorcyle;television;cow_plough;solar_panel;mobile_phone","12":"3","13":"Nov","14":"uuid:87998c33-c8d2-49ec-9dae-c123735957ec"},{"1":"180","2":"Ruaca","3":"2016-11-25","4":"7","5":"50","6":"muddaub","7":"1","8":"no","9":"never","10":"3","11":"cow_plough;solar_panel","12":"3","13":"Oct;Nov","14":"uuid:ece89122-ea99-4378-b67e-a170127ec4e6"},{"1":"181","2":"God","3":"2016-11-25","4":"11","5":"25","6":"sunbricks","7":"2","8":"yes","9":"more_once","10":"3","11":"cow_cart;motorcyle;bicycle;television;radio;cow_plough;solar_panel;mobile_phone","12":"3","13":"none","14":"uuid:bf373763-dca5-4906-901b-d1bacb4f0286"},{"1":"182","2":"God","3":"2016-11-25","4":"7","5":"21","6":"muddaub","7":"3","8":"no","9":"more_once","10":"2","11":"solar_panel","12":"3","13":"Jan;Feb;Nov;Dec","14":"uuid:394033e8-a6e2-4e39-bfac-458753a1ed78"},{"1":"186","2":"God","3":"2016-11-28","4":"7","5":"24","6":"muddaub","7":"1","8":"no","9":"more_once","10":"2","11":"cow_plough;mobile_phone","12":"3","13":"none","14":"uuid:268bfd97-991c-473f-bd51-bc80676c65c6"},{"1":"187","2":"God","3":"2016-11-28","4":"5","5":"43","6":"muddaub","7":"2","8":"yes","9":"more_once","10":"4","11":"cow_cart;motorcyle;bicycle;television;radio;cow_plough;solar_panel;solar_torch;mobile_phone","12":"3","13":"none","14":"uuid:0a42c9ee-a840-4dda-8123-15c1bede5dfc"},{"1":"195","2":"God","3":"2016-11-28","4":"5","5":"48","6":"burntbricks","7":"1","8":"no","9":"never","10":"3","11":"cow_cart;bicycle;radio;cow_plough;solar_torch","12":"2","13":"Sept;Oct;Nov","14":"uuid:2c132929-9c8f-450a-81ff-367360ce2c19"},{"1":"196","2":"God","3":"2016-11-28","4":"7","5":"49","6":"burntbricks","7":"2","8":"yes","9":"more_once","10":"3","11":"radio;cow_plough;mobile_phone","12":"3","13":"none","14":"uuid:44e427d1-a448-4bf2-b529-7d67b2266c06"},{"1":"197","2":"God","3":"2016-11-28","4":"5","5":"19","6":"burntbricks","7":"2","8":"no","9":"more_once","10":"3","11":"bicycle;television;radio;cow_plough;solar_torch;table;mobile_phone","12":"2","13":"Nov","14":"uuid:85c99fd2-775f-40c9-8654-68223f59d091"},{"1":"198","2":"God","3":"2016-11-28","4":"3","5":"49","6":"burntbricks","7":"1","8":"no","9":"never","10":"1","11":"NA","12":"3","13":"Nov","14":"uuid:28c64954-739c-444c-a6e0-355878e471c8"},{"1":"201","2":"God","3":"2016-11-21","4":"4","5":"6","6":"muddaub","7":"2","8":"NA","9":"NA","10":"2","11":"bicycle;radio;solar_torch;mobile_phone","12":"2","13":"Oct;Nov;Dec","14":"uuid:9e79a31c-3ea5-44f0-80f9-a32db49422e3"},{"1":"202","2":"God","3":"2016-11-17","4":"12","5":"12","6":"burntbricks","7":"4","8":"yes","9":"more_once","10":"3","11":"cow_cart;radio;cow_plough;solar_panel;solar_torch;table;mobile_phone","12":"3","13":"Jan;Feb;Mar;Oct;Nov;Dec","14":"uuid:06d39051-38ef-4757-b68b-3327b1f16b9d"},{"1":"72","2":"Ruaca","3":"2017-04-26","4":"6","5":"24","6":"muddaub","7":"1","8":"yes","9":"more_once","10":"3","11":"bicycle;radio;cow_plough","12":"2","13":"Jan;Aug;Sept;Oct;Nov;Dec","14":"uuid:c4a2c982-244e-45a5-aa4b-71fa53f99e18"},{"1":"73","2":"Ruaca","3":"2017-04-26","4":"7","5":"9","6":"burntbricks","7":"2","8":"yes","9":"more_once","10":"3","11":"cow_cart;motorcyle;bicycle;television;radio;cow_plough;solar_panel;table;mobile_phone","12":"3","13":"Jan;Sept;Oct","14":"uuid:ac3da862-9e6c-4962-94b6-f4c31624f207"},{"1":"76","2":"Ruaca","3":"2017-04-26","4":"17","5":"48","6":"burntbricks","7":"2","8":"yes","9":"more_once","10":"4","11":"bicycle;radio;cow_plough;solar_panel;mobile_phone","12":"3","13":"none","14":"uuid:4178a296-903a-4a8e-9cfa-0cd6143476e8"},{"1":"83","2":"Ruaca","3":"2017-04-27","4":"5","5":"22","6":"burntbricks","7":"1","8":"yes","9":"never","10":"2","11":"radio;cow_plough;solar_torch","12":"2","13":"Aug;Sept;Oct","14":"uuid:a1e9df00-c8ae-411c-931c-c7df898c68d0"},{"1":"85","2":"Ruaca","3":"2017-04-27","4":"7","5":"40","6":"sunbricks","7":"1","8":"no","9":"never","10":"2","11":"radio;cow_plough","12":"2","13":"Oct;Nov","14":"uuid:4d0f472b-f8ae-4026-87c9-6b5be14b0a70"},{"1":"89","2":"God","3":"2017-04-27","4":"5","5":"10","6":"burntbricks","7":"2","8":"no","9":"never","10":"3","11":"bicycle;radio;cow_plough;solar_panel;solar_torch;table;mobile_phone","12":"3","13":"Oct;Nov","14":"uuid:b3b309c6-f234-4830-8b30-87d26a17ee1d"},{"1":"101","2":"God","3":"2017-04-27","4":"3","5":"4","6":"muddaub","7":"1","8":"no","9":"never","10":"1","11":"bicycle;solar_torch","12":"3","13":"Sept;Oct;Nov","14":"uuid:3c174acd-e431-4523-9ad6-eb14cddca805"},{"1":"103","2":"Ruaca","3":"2017-04-27","4":"6","5":"96","6":"sunbricks","7":"1","8":"no","9":"never","10":"5","11":"cow_cart;cow_plough;solar_panel;sofa_set;mobile_phone","12":"3","13":"Jan;Feb;Dec","14":"uuid:e9d79844-ef14-493b-bbd6-d13691cc660e"},{"1":"102","2":"Ruaca","3":"2017-04-28","4":"12","5":"15","6":"burntbricks","7":"2","8":"yes","9":"frequently","10":"2","11":"cow_plough;table;sofa_set;mobile_phone","12":"3","13":"Jan;Feb","14":"uuid:76206b0b-af74-4344-b24f-81e839f0d7b0"},{"1":"78","2":"Ruaca","3":"2017-04-28","4":"6","5":"48","6":"burntbricks","7":"1","8":"no","9":"more_once","10":"2","11":"cow_plough","12":"2","13":"Aug;Sept;Oct","14":"uuid:da3fa7cc-5ce9-44fd-9a78-b8982b607515"},{"1":"80","2":"Ruaca","3":"2017-04-28","4":"5","5":"12","6":"muddaub","7":"1","8":"no","9":"more_once","10":"1","11":"cow_cart;bicycle;radio;cow_plough;solar_panel;solar_torch","12":"3","13":"none","14":"uuid:a85df6df-0336-46fa-a9f4-522bf6f8b438"},{"1":"104","2":"Ruaca","3":"2017-04-28","4":"14","5":"52","6":"sunbricks","7":"1","8":"yes","9":"never","10":"4","11":"cow_cart;bicycle;cow_plough","12":"3","13":"Jan;Feb;Dec","14":"uuid:bb2bb365-7d7d-4fe9-9353-b21269676119"},{"1":"105","2":"Ruaca","3":"2017-04-28","4":"6","5":"40","6":"sunbricks","7":"1","8":"yes","9":"frequently","10":"2","11":"motorcyle;radio;cow_plough;solar_panel;mobile_phone","12":"3","13":"Jan;Feb;Dec","14":"uuid:af0904ee-4fdb-4090-973f-599c81ddf022"},{"1":"106","2":"God","3":"2017-04-30","4":"15","5":"22","6":"sunbricks","7":"5","8":"no","9":"never","10":"2","11":"cow_cart;motorcyle;bicycle;radio;sterio;cow_plough;solar_panel;solar_torch;table;mobile_phone","12":"3","13":"Oct;Nov;Dec","14":"uuid:468797c1-4a65-4f35-9c83-e28ce46972a2"},{"1":"109","2":"God","3":"2017-05-03","4":"4","5":"12","6":"sunbricks","7":"1","8":"NA","9":"NA","10":"3","11":"cow_cart;bicycle;radio;cow_plough;table","12":"3","13":"July;Aug;Sept;Oct;Nov","14":"uuid:602cd3f6-4a97-49c6-80e3-bcfd5c78dfa4"},{"1":"110","2":"Ruaca","3":"2017-05-03","4":"6","5":"22","6":"sunbricks","7":"3","8":"no","9":"never","10":"3","11":"bicycle;radio;cow_plough;table;mobile_phone","12":"2","13":"none","14":"uuid:e7c51ac4-24e4-475e-88e7-f85e896945e3"},{"1":"113","2":"Ruaca","3":"2017-05-03","4":"11","5":"26","6":"burntbricks","7":"3","8":"no","9":"never","10":"4","11":"cow_cart;motorcyle;bicycle;radio;cow_plough;solar_panel;solar_torch;table;mobile_phone","12":"3","13":"none","14":"uuid:01210861-aba1-4268-98d0-0260e05f5155"},{"1":"118","2":"Ruaca","3":"2017-05-04","4":"5","5":"25","6":"muddaub","7":"1","8":"NA","9":"NA","10":"1","11":"radio;solar_torch;mobile_phone","12":"3","13":"Oct;Nov;Dec","14":"uuid:77335b2e-8812-4a35-b1e5-ca9ab626dfea"},{"1":"125","2":"Ruaca","3":"2017-05-04","4":"5","5":"14","6":"burntbricks","7":"1","8":"no","9":"more_once","10":"2","11":"bicycle;radio;cow_plough;solar_panel;solar_torch;mobile_phone","12":"3","13":"Jan;Sept;Oct;Nov;Dec","14":"uuid:02b05c68-302e-4e7a-b229-81cb1377fd29"},{"1":"119","2":"Ruaca","3":"2017-05-04","4":"3","5":"14","6":"muddaub","7":"1","8":"no","9":"never","10":"4","11":"bicycle;cow_plough;solar_panel;mobile_phone","12":"3","13":"none","14":"uuid:fa201fce-4e94-44b8-b435-c558c2e1ed55"},{"1":"115","2":"Ruaca","3":"2017-05-11","4":"4","5":"16","6":"sunbricks","7":"2","8":"NA","9":"NA","10":"3","11":"cow_cart;motorcyle;bicycle;television;radio;cow_plough;solar_panel;solar_torch;table;mobile_phone","12":"3","13":"none","14":"uuid:628fe23d-188f-43e4-a203-a4bf3257d461"},{"1":"108","2":"God","3":"2017-05-11","4":"15","5":"22","6":"burntbricks","7":"2","8":"no","9":"never","10":"4","11":"cow_cart;bicycle;radio;cow_plough;solar_panel;table;mobile_phone","12":"3","13":"Aug;Sept;Oct;Nov","14":"uuid:e4f4d6ba-e698-45a5-947f-ba6da88cc22b"},{"1":"116","2":"Ruaca","3":"2017-05-11","4":"5","5":"25","6":"burntbricks","7":"3","8":"NA","9":"NA","10":"3","11":"motorcyle;bicycle;television;radio;cow_plough;solar_panel;solar_torch;table;mobile_phone","12":"3","13":"Jan;Nov;Dec","14":"uuid:cfee6297-2c0e-4f8a-94cc-9aaee0bd64cb"},{"1":"117","2":"Ruaca","3":"2017-05-11","4":"10","5":"28","6":"muddaub","7":"4","8":"NA","9":"NA","10":"1","11":"motorcyle;television;radio;solar_panel;solar_torch;table;mobile_phone","12":"3","13":"Jan;Feb;Nov;Dec","14":"uuid:3fe626b3-c794-48e1-a80f-5bfe440c507b"},{"1":"144","2":"Ruaca","3":"2017-05-18","4":"7","5":"5","6":"burntbricks","7":"4","8":"no","9":"frequently","10":"4","11":"cow_cart;television;radio;cow_plough;solar_panel;solar_torch;table;mobile_phone","12":"2","13":"none","14":"uuid:0670cef6-d233-4852-89d8-36955261b0a3"},{"1":"143","2":"Ruaca","3":"2017-05-18","4":"10","5":"24","6":"burntbricks","7":"2","8":"no","9":"frequently","10":"3","11":"cow_cart;motorcyle;television;radio;cow_plough;solar_torch;table;mobile_phone","12":"3","13":"Jan;Dec","14":"uuid:9a096a12-b335-468c-b3cc-1191180d62de"},{"1":"150","2":"Ruaca","3":"2017-05-18","4":"7","5":"8","6":"muddaub","7":"1","8":"no","9":"never","10":"1","11":"mobile_phone","12":"3","13":"Sept;Oct;Nov","14":"uuid:92613d0d-e7b1-4d62-8ea4-451d7cd0a982"},{"1":"159","2":"God","3":"2017-05-18","4":"4","5":"24","6":"sunbricks","7":"1","8":"no","9":"never","10":"1","11":"radio;solar_panel;solar_torch","12":"3","13":"Sept;Oct;Nov","14":"uuid:37577f91-d665-443e-8d70-b914954cef4b"},{"1":"160","2":"God","3":"2017-06-03","4":"7","5":"13","6":"burntbricks","7":"2","8":"yes","9":"frequently","10":"2","11":"cow_cart;cow_plough;solar_torch;mobile_phone","12":"2","13":"Nov","14":"uuid:f22831ec-6bc3-4b73-9197-4b01e01abb66"},{"1":"165","2":"Ruaca","3":"2017-06-03","4":"9","5":"14","6":"burntbricks","7":"1","8":"no","9":"never","10":"3","11":"cow_cart;motorcyle;bicycle;television;radio;cow_plough;solar_torch;electricity;table;sofa_set;mobile_phone;fridge","12":"3","13":"none","14":"uuid:62f3f7af-f0f3-4f88-b9e0-acf8baa49ae4"},{"1":"166","2":"Ruaca","3":"2017-06-03","4":"11","5":"16","6":"muddaub","7":"1","8":"no","9":"never","10":"1","11":"bicycle;solar_torch;mobile_phone","12":"2","13":"Feb;Mar","14":"uuid:40aac732-94df-496c-97ba-5b67f59bcc7a"},{"1":"167","2":"Ruaca","3":"2017-06-03","4":"8","5":"24","6":"muddaub","7":"1","8":"no","9":"never","10":"3","11":"motorcyle;radio;cow_plough;solar_panel;solar_torch;table;mobile_phone","12":"2","13":"Jan;Nov;Dec","14":"uuid:a9d1a013-043b-475d-a71b-77ed80abe970"},{"1":"174","2":"Ruaca","3":"2017-06-03","4":"12","5":"25","6":"burntbricks","7":"2","8":"no","9":"never","10":"3","11":"car;lorry;motorcyle;radio;sterio;cow_plough;solar_panel;solar_torch;table;sofa_set;mobile_phone;fridge","12":"3","13":"Jan;Feb;Dec","14":"uuid:43ec6132-478c-4f87-878d-fb3c0c4d0c74"},{"1":"175","2":"Ruaca","3":"2017-06-03","4":"7","5":"36","6":"burntbricks","7":"1","8":"no","9":"never","10":"4","11":"motorcyle;bicycle;radio;sterio;cow_plough;solar_panel;table;mobile_phone","12":"2","13":"Jan;Oct;Nov;Dec","14":"uuid:64fc743e-8176-40f6-8ae4-36ae97fac1d9"},{"1":"189","2":"Ruaca","3":"2017-06-03","4":"15","5":"16","6":"sunbricks","7":"1","8":"no","9":"never","10":"3","11":"motorcyle;radio;sterio;cow_plough;solar_panel;table;mobile_phone","12":"3","13":"Nov","14":"uuid:c17e374c-280b-4e78-bf21-74a7c1c73492"},{"1":"191","2":"Ruaca","3":"2017-06-03","4":"10","5":"5","6":"burntbricks","7":"4","8":"no","9":"never","10":"1","11":"radio;cow_plough;solar_panel;solar_torch;mobile_phone","12":"2","13":"Oct;Nov;Dec","14":"uuid:dad53aff-b520-4015-a9e3-f5fdf9168fe1"},{"1":"192","2":"Chirodzo","3":"2017-06-03","4":"9","5":"20","6":"burntbricks","7":"1","8":"no","9":"once","10":"1","11":"bicycle;television;radio;sterio;solar_panel;solar_torch;table;mobile_phone","12":"3","13":"Jan;Nov;Dec","14":"uuid:f94409a6-e461-4e4c-a6fb-0072d3d58b00"},{"1":"126","2":"Ruaca","3":"2017-05-18","4":"3","5":"7","6":"burntbricks","7":"1","8":"no","9":"more_once","10":"3","11":"motorcyle;radio;solar_panel","12":"3","13":"Oct;Nov;Dec","14":"uuid:69caea81-a4e5-4e8d-83cd-9c18d8e8d965"},{"1":"193","2":"Ruaca","3":"2017-06-04","4":"7","5":"10","6":"cement","7":"3","8":"no","9":"more_once","10":"3","11":"car;lorry;television;radio;sterio;cow_plough;solar_torch;electricity;table;sofa_set;mobile_phone;fridge","12":"3","13":"none","14":"uuid:5ccc2e5a-ea90-48b5-8542-69400d5334df"},{"1":"194","2":"Ruaca","3":"2017-06-04","4":"4","5":"5","6":"muddaub","7":"1","8":"no","9":"more_once","10":"1","11":"radio;solar_panel;solar_torch;mobile_phone","12":"3","13":"Sept;Oct;Nov","14":"uuid:95c11a30-d44f-40c4-8ea8-ec34fca6bbbf"},{"1":"199","2":"Chirodzo","3":"2017-06-04","4":"7","5":"17","6":"burntbricks","7":"2","8":"yes","9":"more_once","10":"2","11":"cow_cart;lorry;motorcyle;computer;television;radio;sterio;cow_plough;solar_panel;solar_torch;electricity;mobile_phone","12":"3","13":"Nov;Dec","14":"uuid:ffc83162-ff24-4a87-8709-eff17abc0b3b"},{"1":"200","2":"Chirodzo","3":"2017-06-04","4":"8","5":"20","6":"burntbricks","7":"2","8":"NA","9":"NA","10":"3","11":"radio;cow_plough;solar_panel;solar_torch;table;mobile_phone","12":"3","13":"Oct;Nov","14":"uuid:aa77a0d7-7142-41c8-b494-483a5b68d8a7"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+</figure>
+</div>
+</div>
+</section>
+<section id="safi-dataset" class="slide level2">
+<h2>SAFI dataset</h2>
+
+<img data-src="img/SAFI-columns.png" class="r-stretch"></section>
+<section id="absolute-file-paths" class="slide level2 center">
+<h2>Absolute file paths</h2>
+<p>The location of a file on your computer.</p>
+<p>A file in your home directory may be</p>
+<p><code>C:\User\bagginsf\there-and-back-again.docx</code></p>
+<p>or</p>
+<p><code>~/there-and-back-again.docx</code></p>
+<p>depending on your OS. These are <strong>absolute paths</strong>.</p>
+</section>
+<section id="relative-file-paths" class="slide level2">
+<h2>Relative file paths</h2>
+<div class="columns">
+<div class="column" style="width:45%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="https://cdn.myportfolio.com/45214904-6a61-4e23-98d6-b140f8654a40/57457fc3-1d2d-4a3b-a9b7-f0b62e418cd5_rw_1920.png?h=e0721f766fc8f031edeb67f7f8024595" alt="A cartoon showing two paths side-by-side. On the left is a scary spooky forest, with spiderwebs and gnarled trees, with file paths written on the branches like “~/mmm/nope.csv” and “setwd(“/haha/good/luck/”), with a scared looking cute fuzzy monster running out of it. On the right is a bright, colorful path with flowers, rainbow and sunshine, with signs saying “here!” and “it’s all right here!” A monster facing away from us in a backpack and walking stick is looking toward the right path. Stylized text reads “here: find your path.”"></p>
+<figcaption>Artwork by <a href="https://twitter.com/allison_horst"><span class="citation" data-cites="allison_horst">@allison_horst</span></a></figcaption>
+</figure>
+</div>
+</div><div class="column" style="width:55%;">
+<p>With the 📦{here} package combined with an RStudio project we can use <strong>relative paths</strong>.</p>
+<p>This means we start the file path at the root of the project, and don’t have to worry about anything that comes before.</p>
+<p>So if our data file is stored in a folder called <code>data</code>, the file path will be <code>./data/mydata.csv</code></p>
+<p>where <code>.</code> is the project root.</p>
+</div></div>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p>Relative paths are useful when collaborating on projects. Imagine sharing a script that loads data from <code>C:/This/path/only/exists/for/me.csv</code></p>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-1" class="slide level2 inverse smaller scrollable">
+<h2>Exercise 1</h2>
+<ol type="1">
+<li>Create a tibble (<code>interviews_100</code>) containing only the data in row 100 of the interviews dataset.</li>
+</ol>
+<p>Now, continue using interviews for each of the following activities:</p>
+<ol start="2" type="1">
+<li>Notice how <code>nrow()</code> gave you the number of rows in the tibble?</li>
+</ol>
+<ul>
+<li>Use that number to pull out just that last row in the tibble.</li>
+<li>Compare that with what you see as the last row using <code>tail()</code> to make sure it’s meeting expectations.</li>
+<li>Pull out that last row using <code>nrow()</code> instead of the row number.</li>
+<li>Create a new tibble (<code>interviews_last</code>) from that last row.</li>
+</ul>
+<ol start="3" type="1">
+<li>Using the number of rows in the interviews dataset that you found in question 2, extract the row that is in the middle of the dataset. Store the content of this middle row in an object named <code>interviews_middle</code>. (hint: This dataset has an odd number of rows. Use the <code>median()</code> function and what you’ve learned about sequences in R to extract the middle row!)</li>
+<li>Combine <code>nrow()</code> with the <code>-</code> notation to reproduce the behavior of <code>head(interviews)</code>, keeping just the first through 6th rows of the interviews dataset.</li>
+</ol>
+</section>
+<section id="solution" class="slide level2 center">
+<h2>Solution</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="do">## 1.</span></span>
+<span id="cb1-2"><a></a>interviews_100 <span class="ot">&lt;-</span> interviews[<span class="dv">100</span>, ]</span>
+<span id="cb1-3"><a></a><span class="do">## 2.</span></span>
+<span id="cb1-4"><a></a><span class="co"># Saving `n_rows` to improve readability and reduce duplication</span></span>
+<span id="cb1-5"><a></a>n_rows <span class="ot">&lt;-</span> <span class="fu">nrow</span>(interviews)</span>
+<span id="cb1-6"><a></a>interviews_last <span class="ot">&lt;-</span> interviews[n_rows, ]</span>
+<span id="cb1-7"><a></a><span class="do">## 3.</span></span>
+<span id="cb1-8"><a></a>interviews_middle <span class="ot">&lt;-</span> interviews[<span class="fu">median</span>(<span class="dv">1</span><span class="sc">:</span>n_rows), ]</span>
+<span id="cb1-9"><a></a><span class="do">## 4.</span></span>
+<span id="cb1-10"><a></a>interviews_head <span class="ot">&lt;-</span> interviews[<span class="sc">-</span>(<span class="dv">7</span><span class="sc">:</span>n_rows), ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="exercise-2" class="slide level2 inverse center">
+<h2>Exercise 2</h2>
+<ul>
+<li><p>Rename the levels of the factor to have the first letter in uppercase: “No”, “Undetermined”, and “Yes”.</p></li>
+<li><p>Now that we have renamed the factor level to “Undetermined”, can you recreate the barplot such that “Undetermined” is last (after “Yes”)?</p></li>
+</ul>
+</section>
+<section id="solution-1" class="slide level2 inverse center">
+<h2>Solution</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>memb_assoc <span class="ot">&lt;-</span> interviews<span class="sc">$</span>memb_assoc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="do">## Rename levels</span></span>
+<span id="cb3-2"><a></a>memb_assoc <span class="ot">&lt;-</span> <span class="fu">fct_recode</span>(memb_assoc, <span class="at">No =</span> <span class="st">"no"</span>,</span>
+<span id="cb3-3"><a></a>                         <span class="at">Undetermined =</span> <span class="st">"undetermined"</span>, <span class="at">Yes =</span> <span class="st">"yes"</span>)</span>
+<span id="cb3-4"><a></a><span class="do">## Reorder levels. Note we need to use the new level names.</span></span>
+<span id="cb3-5"><a></a>memb_assoc <span class="ot">&lt;-</span> <span class="fu">factor</span>(memb_assoc, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"No"</span>, <span class="st">"Yes"</span>, <span class="st">"Undetermined"</span>))</span>
+<span id="cb3-6"><a></a><span class="fu">plot</span>(memb_assoc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="02_start-data_files/figure-revealjs/unnamed-chunk-5-1.png" width="960" class="r-stretch"></section>
+<section id="questions" class="slide level2 center">
+<h2>Questions</h2>
+<p>See if you can answer these questions</p>
+<ul>
+<li>What is a data.frame?</li>
+<li>How can I read a complete csv file into R?</li>
+<li>How can I get basic summary information about my dataset?</li>
+<li>How can I change the way R treats strings in my dataset?</li>
+<li>Why would I want strings to be treated differently?</li>
+<li>How are dates represented in R and how can I change the format?</li>
+</ul>
+
+
+</section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="site_libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: false,
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'default',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
+    <script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const isCodeAnnotation = (el) => {
+        for (const clz of el.classList) {
+          if (clz.startsWith('code-annotation-')) {                     
+            return true;
+          }
+        }
+        return false;
+      }
+      const onCopySuccess = function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copied!");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "Copied!");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
+        }
+        setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
+      });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp("https:\/\/bbartholdy\.github\.io\/data-carpentry-slides\/");
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+        const config = {
+          allowHTML: true,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start',
+        };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          // use id or data attribute instead here
+          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
+        });
+      }
+      const findCites = (el) => {
+        const parentEl = el.parentElement;
+        if (parentEl) {
+          const cites = parentEl.dataset.cites;
+          if (cites) {
+            return {
+              el,
+              cites: cites.split(' ')
+            };
+          } else {
+            return findCites(el.parentElement)
+          }
+        } else {
+          return undefined;
+        }
+      };
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const citeInfo = findCites(ref);
+        if (citeInfo) {
+          tippyHover(citeInfo.el, function() {
+            var popup = window.document.createElement('div');
+            citeInfo.cites.forEach(function(cite) {
+              var citeDiv = window.document.createElement('div');
+              citeDiv.classList.add('hanging-indent');
+              citeDiv.classList.add('csl-entry');
+              var biblioDiv = window.document.getElementById('ref-' + cite);
+              if (biblioDiv) {
+                citeDiv.innerHTML = biblioDiv.innerHTML;
+              }
+              popup.appendChild(citeDiv);
+            });
+            return popup.innerHTML;
+          });
+        }
+      }
+    });
+    </script>
+    
+
+</body></html>

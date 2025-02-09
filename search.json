@@ -1,0 +1,86 @@
+[
+  {
+    "objectID": "02_start-data.html#objectives",
+    "href": "02_start-data.html#objectives",
+    "title": "Starting with Data",
+    "section": "Objectives",
+    "text": "Objectives\n\nDescribe what a data frame is.\nLoad external data from a .csv file into a data frame.\nSummarize the contents of a data frame.\nSubset values from data frames.\nDescribe the difference between a factor and a string.\nConvert between strings and factors.\nReorder and rename factors.\nChange how character strings are handled in a data frame.\nExamine and change date formats."
+  },
+  {
+    "objectID": "02_start-data.html#objectives-1",
+    "href": "02_start-data.html#objectives-1",
+    "title": "Starting with Data",
+    "section": "Objectives",
+    "text": "Objectives\n\nDescribe what a data frame is.\n\nIt’s a table…"
+  },
+  {
+    "objectID": "02_start-data.html#objectives-2",
+    "href": "02_start-data.html#objectives-2",
+    "title": "Starting with Data",
+    "section": "Objectives",
+    "text": "Objectives\n\nDescribe what a data frame is. 👍\n\nIt’s a table…"
+  },
+  {
+    "objectID": "02_start-data.html#data-frames-and-tibbles",
+    "href": "02_start-data.html#data-frames-and-tibbles",
+    "title": "Starting with Data",
+    "section": "Data frames and tibbles",
+    "text": "Data frames and tibbles\nData frames can contain multiple data types.\nEach column in a data frame must only contain one type.\nA tibble is a type of data frame used by the 📦{tidyverse} packages."
+  },
+  {
+    "objectID": "02_start-data.html#safi-dataset",
+    "href": "02_start-data.html#safi-dataset",
+    "title": "Starting with Data",
+    "section": "SAFI dataset",
+    "text": "SAFI dataset"
+  },
+  {
+    "objectID": "02_start-data.html#absolute-file-paths",
+    "href": "02_start-data.html#absolute-file-paths",
+    "title": "Starting with Data",
+    "section": "Absolute file paths",
+    "text": "Absolute file paths\nThe location of a file on your computer.\nA file in your home directory may be\nC:\\User\\bagginsf\\there-and-back-again.docx\nor\n~/there-and-back-again.docx\ndepending on your OS. These are absolute paths."
+  },
+  {
+    "objectID": "02_start-data.html#relative-file-paths",
+    "href": "02_start-data.html#relative-file-paths",
+    "title": "Starting with Data",
+    "section": "Relative file paths",
+    "text": "Relative file paths\n\n\n\n\n\nArtwork by @allison_horst\n\n\n\nWith the 📦{here} package combined with an RStudio project we can use relative paths.\nThis means we start the file path at the root of the project, and don’t have to worry about anything that comes before.\nSo if our data file is stored in a folder called data, the file path will be ./data/mydata.csv\nwhere . is the project root.\n\n\n\n\n\n\n\nImportant\n\n\nRelative paths are useful when collaborating on projects. Imagine sharing a script that loads data from C:/This/path/only/exists/for/me.csv"
+  },
+  {
+    "objectID": "02_start-data.html#exercise-1",
+    "href": "02_start-data.html#exercise-1",
+    "title": "Starting with Data",
+    "section": "Exercise 1",
+    "text": "Exercise 1\n\nCreate a tibble (interviews_100) containing only the data in row 100 of the interviews dataset.\n\nNow, continue using interviews for each of the following activities:\n\nNotice how nrow() gave you the number of rows in the tibble?\n\n\nUse that number to pull out just that last row in the tibble.\nCompare that with what you see as the last row using tail() to make sure it’s meeting expectations.\nPull out that last row using nrow() instead of the row number.\nCreate a new tibble (interviews_last) from that last row.\n\n\nUsing the number of rows in the interviews dataset that you found in question 2, extract the row that is in the middle of the dataset. Store the content of this middle row in an object named interviews_middle. (hint: This dataset has an odd number of rows. Use the median() function and what you’ve learned about sequences in R to extract the middle row!)\nCombine nrow() with the - notation to reproduce the behavior of head(interviews), keeping just the first through 6th rows of the interviews dataset."
+  },
+  {
+    "objectID": "02_start-data.html#solution",
+    "href": "02_start-data.html#solution",
+    "title": "Starting with Data",
+    "section": "Solution",
+    "text": "Solution\n\n## 1.\ninterviews_100 &lt;- interviews[100, ]\n## 2.\n# Saving `n_rows` to improve readability and reduce duplication\nn_rows &lt;- nrow(interviews)\ninterviews_last &lt;- interviews[n_rows, ]\n## 3.\ninterviews_middle &lt;- interviews[median(1:n_rows), ]\n## 4.\ninterviews_head &lt;- interviews[-(7:n_rows), ]"
+  },
+  {
+    "objectID": "02_start-data.html#exercise-2",
+    "href": "02_start-data.html#exercise-2",
+    "title": "Starting with Data",
+    "section": "Exercise 2",
+    "text": "Exercise 2\n\nRename the levels of the factor to have the first letter in uppercase: “No”, “Undetermined”, and “Yes”.\nNow that we have renamed the factor level to “Undetermined”, can you recreate the barplot such that “Undetermined” is last (after “Yes”)?"
+  },
+  {
+    "objectID": "02_start-data.html#solution-1",
+    "href": "02_start-data.html#solution-1",
+    "title": "Starting with Data",
+    "section": "Solution",
+    "text": "Solution\n\nmemb_assoc &lt;- interviews$memb_assoc\n\n\n## Rename levels\nmemb_assoc &lt;- fct_recode(memb_assoc, No = \"no\",\n                         Undetermined = \"undetermined\", Yes = \"yes\")\n## Reorder levels. Note we need to use the new level names.\nmemb_assoc &lt;- factor(memb_assoc, levels = c(\"No\", \"Yes\", \"Undetermined\"))\nplot(memb_assoc)"
+  },
+  {
+    "objectID": "02_start-data.html#questions",
+    "href": "02_start-data.html#questions",
+    "title": "Starting with Data",
+    "section": "Questions",
+    "text": "Questions\nSee if you can answer these questions\n\nWhat is a data.frame?\nHow can I read a complete csv file into R?\nHow can I get basic summary information about my dataset?\nHow can I change the way R treats strings in my dataset?\nWhy would I want strings to be treated differently?\nHow are dates represented in R and how can I change the format?"
+  }
+]

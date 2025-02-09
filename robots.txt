@@ -1,0 +1,1 @@
+Sitemap: https://bbartholdy.github.io/data-carpentry-slides/sitemap.xml
