@@ -1,6 +1,6 @@
 ---
 title: "Starting with Data"
-date: "2024-06-20"
+date: "2025-02-10"
 ---
 
 ```{r}
@@ -31,11 +31,13 @@ interviews <- readr::read_csv(here("data/SAFI_clean.csv"), na = "NULL")
 
 [It's a table...]{.fragment}
 
+
 ## Objectives {.center}
 
 - Describe what a data frame is. [👍]{.fragment}
 
 It's a table...
+
 
 ## Data frames and tibbles {.center}
 
@@ -60,6 +62,7 @@ interviews
 
 ![](img/SAFI-columns.png)
 
+
 ## Absolute file paths {.center}
 
 The location of a file on your computer.
@@ -73,6 +76,7 @@ or
 `~/there-and-back-again.docx`
 
 depending on your OS. These are **absolute paths**.
+
 
 ## Relative file paths
 
@@ -100,6 +104,7 @@ Relative paths are useful when collaborating on projects. Imagine sharing a
 script that loads data from `C:/This/path/only/exists/for/me.csv`
 :::
 
+
 ## Exercise 1 {.inverse .smaller .scrollable}
 
 
@@ -114,6 +119,7 @@ Now, continue using interviews for each of the following activities:
   - Create a new tibble (`interviews_last`) from that last row.
 3. Using the number of rows in the interviews dataset that you found in question 2, extract the row that is in the middle of the dataset. Store the content of this middle row in an object named `interviews_middle`. (hint: This dataset has an odd number of rows. Use the `median()` function and what you’ve learned about sequences in R to extract the middle row!)
 4. Combine `nrow()` with the `-` notation to reproduce the behavior of `head(interviews)`, keeping just the first through 6th rows of the interviews dataset.
+
 
 ## Solution {.center}
 
@@ -155,6 +161,7 @@ memb_assoc <- fct_recode(memb_assoc, No = "no",
 memb_assoc <- factor(memb_assoc, levels = c("No", "Yes", "Undetermined"))
 plot(memb_assoc)
 ```
+
 
 ## Questions {.center}
 
