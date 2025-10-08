@@ -1,86 +1,114 @@
 [
   {
-    "objectID": "02_start-data.html#objectives",
-    "href": "02_start-data.html#objectives",
-    "title": "Starting with Data",
-    "section": "Objectives",
-    "text": "Objectives\n\nDescribe what a data frame is.\nLoad external data from a .csv file into a data frame.\nSummarize the contents of a data frame.\nSubset values from data frames.\nDescribe the difference between a factor and a string.\nConvert between strings and factors.\nReorder and rename factors.\nChange how character strings are handled in a data frame.\nExamine and change date formats."
+    "objectID": "05_quarto.html#what-is-quarto",
+    "href": "05_quarto.html#what-is-quarto",
+    "title": "Getting Started with Quarto",
+    "section": "What is Quarto?",
+    "text": "What is Quarto?\nQuarto is a free, open-source scientific and tecnical publishing system.\nQuarto allows you to seamlessly combine executable R code, its output, and text in a single document.\nThese documents can be converted to multiple static and dynamic output formats, including PDF (.pdf), Word (.docx), and HTML (.html).\nThe benefit of a well-prepared Quarto document is full reproducibility.\n\nArtwork by @allison_horst"
   },
   {
-    "objectID": "02_start-data.html#objectives-1",
-    "href": "02_start-data.html#objectives-1",
-    "title": "Starting with Data",
-    "section": "Objectives",
-    "text": "Objectives\n\nDescribe what a data frame is.\n\nIt’s a table…"
+    "objectID": "05_quarto.html#why-quarto",
+    "href": "05_quarto.html#why-quarto",
+    "title": "Getting Started with Quarto",
+    "section": "Why Quarto?",
+    "text": "Why Quarto?\nFull reproducibility also means\n\nflexibility to add data and recompile\nno need to change all occurrences in a document\neasily fix mistakes made during analysis…\n\n\nArtwork by @allison_horst"
   },
   {
-    "objectID": "02_start-data.html#objectives-2",
-    "href": "02_start-data.html#objectives-2",
-    "title": "Starting with Data",
-    "section": "Objectives",
-    "text": "Objectives\n\nDescribe what a data frame is. 👍\n\nIt’s a table…"
-  },
-  {
-    "objectID": "02_start-data.html#data-frames-and-tibbles",
-    "href": "02_start-data.html#data-frames-and-tibbles",
-    "title": "Starting with Data",
-    "section": "Data frames and tibbles",
-    "text": "Data frames and tibbles\nData frames can contain multiple data types.\nEach column in a data frame must only contain one type.\nA tibble is a type of data frame used by the 📦{tidyverse} packages."
-  },
-  {
-    "objectID": "02_start-data.html#safi-dataset",
-    "href": "02_start-data.html#safi-dataset",
-    "title": "Starting with Data",
-    "section": "SAFI dataset",
-    "text": "SAFI dataset"
-  },
-  {
-    "objectID": "02_start-data.html#absolute-file-paths",
-    "href": "02_start-data.html#absolute-file-paths",
-    "title": "Starting with Data",
-    "section": "Absolute file paths",
-    "text": "Absolute file paths\nThe location of a file on your computer.\nA file in your home directory may be\nC:\\User\\bagginsf\\there-and-back-again.docx\nor\n~/there-and-back-again.docx\ndepending on your OS. These are absolute paths."
-  },
-  {
-    "objectID": "02_start-data.html#relative-file-paths",
-    "href": "02_start-data.html#relative-file-paths",
-    "title": "Starting with Data",
-    "section": "Relative file paths",
-    "text": "Relative file paths\n\n\n\n\n\nArtwork by @allison_horst\n\n\n\nWith the 📦{here} package combined with an RStudio project we can use relative paths.\nThis means we start the file path at the root of the project, and don’t have to worry about anything that comes before.\nSo if our data file is stored in a folder called data, the file path will be ./data/mydata.csv\nwhere . is the project root.\n\n\n\n\n\n\n\nImportant\n\n\nRelative paths are useful when collaborating on projects. Imagine sharing a script that loads data from C:/This/path/only/exists/for/me.csv"
-  },
-  {
-    "objectID": "02_start-data.html#exercise-1",
-    "href": "02_start-data.html#exercise-1",
-    "title": "Starting with Data",
+    "objectID": "05_quarto.html#exercise-1",
+    "href": "05_quarto.html#exercise-1",
+    "title": "Getting Started with Quarto",
     "section": "Exercise 1",
-    "text": "Exercise 1\n\nCreate a tibble (interviews_100) containing only the data in row 100 of the interviews dataset.\n\nNow, continue using interviews for each of the following activities:\n\nNotice how nrow() gave you the number of rows in the tibble?\n\n\nUse that number to pull out just that last row in the tibble.\nCompare that with what you see as the last row using tail() to make sure it’s meeting expectations.\nPull out that last row using nrow() instead of the row number.\nCreate a new tibble (interviews_last) from that last row.\n\n\nUsing the number of rows in the interviews dataset that you found in question 2, extract the row that is in the middle of the dataset. Store the content of this middle row in an object named interviews_middle. (hint: This dataset has an odd number of rows. Use the median() function and what you’ve learned about sequences in R to extract the middle row!)\nCombine nrow() with the - notation to reproduce the behavior of head(interviews), keeping just the first through 6th rows of the interviews dataset."
+    "text": "Exercise 1\n⏰ 4 mins\nPlay around with the different options in the chunk with the code for the table, and re-Render to see what each option does to the output.\nWhat happens if you use eval: false and echo: false?\nWhat is the difference between this and include: false?\n −+ 04:00 \n\nSolution\nCreate a chunk with eval: false, echo: false\nthen create another chunk with include: false to compare.\neval: false, echo: false will neither run the code in the chunk, nor show the code in the rendered document. The code chunk essentially doesn’t exist in the rendered document…\n…whereas include: false will run the code and store the output for later use.\nSee a comprehensive list of chunk options here"
   },
   {
-    "objectID": "02_start-data.html#solution",
-    "href": "02_start-data.html#solution",
-    "title": "Starting with Data",
-    "section": "Solution",
-    "text": "Solution\n\n## 1.\ninterviews_100 &lt;- interviews[100, ]\n## 2.\n# Saving `n_rows` to improve readability and reduce duplication\nn_rows &lt;- nrow(interviews)\ninterviews_last &lt;- interviews[n_rows, ]\n## 3.\ninterviews_middle &lt;- interviews[median(1:n_rows), ]\n## 4.\ninterviews_head &lt;- interviews[-(7:n_rows), ]"
+    "objectID": "04_data-viz.html#why-ggplot2",
+    "href": "04_data-viz.html#why-ggplot2",
+    "title": "Data Visualisation with ggplot2",
+    "section": "Why ggplot2?",
+    "text": "Why ggplot2?\n…because these are ‘base’ plots\n\n\n\nplot(number_items ~ no_membrs, \n     interviews_plotting, \n     col = \"blue\")\n\n\n\n\n\n\n\n\n\n\nboxplot(rooms ~ village, \n        interviews_plotting, \n        col = c(\"blue\", \"green\", \"red\"))"
   },
   {
-    "objectID": "02_start-data.html#exercise-2",
-    "href": "02_start-data.html#exercise-2",
-    "title": "Starting with Data",
+    "objectID": "04_data-viz.html#why-ggplot2-1",
+    "href": "04_data-viz.html#why-ggplot2-1",
+    "title": "Data Visualisation with ggplot2",
+    "section": "Why ggplot2?",
+    "text": "Why ggplot2?\n…and these are ggplots 😎\n\n\n\ninterviews_plotting %&gt;% \n   ggplot(aes(x = no_membrs, y = number_items, color = village)) +\n      geom_count() +\n      theme_bw() +\n      labs(x = \"Number of items\", \n           y = \"Number of members in a household\")\n\n\n\n\n\n\n\n\n\n\ninterviews_plotting %&gt;%\n  ggplot(aes(x = village, y = rooms, fill = village)) +\n    geom_violin() +\n    theme_minimal() +\n    theme(legend.position = \"none\",\n        panel.grid.major.x = element_blank())"
+  },
+  {
+    "objectID": "04_data-viz.html#ggplot2",
+    "href": "04_data-viz.html#ggplot2",
+    "title": "Data Visualisation with ggplot2",
+    "section": "ggplot2",
+    "text": "ggplot2\n\nggplot2 is a package (included in tidyverse) for creating highly customisable plots that are built step-by-step by adding layers.\nThe separation of a plot into layers allows a high degree of flexibility with minimal effort."
+  },
+  {
+    "objectID": "04_data-viz.html#exercise-1",
+    "href": "04_data-viz.html#exercise-1",
+    "title": "Data Visualisation with ggplot2",
+    "section": "Exercise 1",
+    "text": "Exercise 1\n⏰ 6 mins\nCreate a new code chunk with the label fig-rooms-scatter.\nCreate a scatter plot of rooms by village with the respondant_wall_type showing in different colours.\nDoes this seem like a good way to display the relationship between these variables?\nWhat other kinds of plots might you use to show this type of data?\n −+ 06:00"
+  },
+  {
+    "objectID": "04_data-viz.html#exercise-1-solution",
+    "href": "04_data-viz.html#exercise-1-solution",
+    "title": "Data Visualisation with ggplot2",
+    "section": "Exercise 1: Solution",
+    "text": "Exercise 1: Solution\n\ngeom_pointgeom_jitter\n\n\n\ninterviews_plotting %&gt;%\n    ggplot(aes(x = village, y = rooms, colour = respondent_wall_type)) +\n    geom_point() +\n    theme_classic() +\n    scale_fill_viridis_d() # add colourblind-friendly palette\n\n\n\n\n\n\n\n\n\n\n\ninterviews_plotting %&gt;%\n    ggplot(aes(x = village, y = rooms, colour = respondent_wall_type)) +\n    geom_jitter(width = 0.2, height = 0.2) +\n    theme_classic() +\n    scale_fill_viridis_d() # add colourblind-friendly palette"
+  },
+  {
+    "objectID": "04_data-viz.html#captioning",
+    "href": "04_data-viz.html#captioning",
+    "title": "Data Visualisation with ggplot2",
+    "section": "Captioning",
+    "text": "Captioning\nNow that we have created the plot, we can also create a caption using the fig-cap chunk option.\n\n```{r}\n#| label: fig-rooms-scatter\n#| fig-cap: \"This plot shows the relationship between the variables room and village, but doesn't do a very good job at it.\"\n\ninterviews_plotting %&gt;%\n    ggplot(aes(x = village, y = rooms, colour = respondent_wall_type)) +\n    geom_point() +\n    theme_classic() +\n    scale_fill_viridis_d() # add colourblind-friendly palette\n```\n\n\n\nFigure 1: This plot shows the relationship between the variables room and village, but doesn’t do a very good job at it."
+  },
+  {
+    "objectID": "04_data-viz.html#exercise-2",
+    "href": "04_data-viz.html#exercise-2",
+    "title": "Data Visualisation with ggplot2",
     "section": "Exercise 2",
-    "text": "Exercise 2\n\nRename the levels of the factor to have the first letter in uppercase: “No”, “Undetermined”, and “Yes”.\nNow that we have renamed the factor level to “Undetermined”, can you recreate the barplot such that “Undetermined” is last (after “Yes”)?"
+    "text": "Exercise 2\n⏰ 4 mins\nBoxplots are useful summaries, but hide the shape of the distribution. For example, if the distribution is bimodal, we would not see it in a boxplot.\nReplace the box plot with a violin plot\nsee geom_violin()\n −+ 04:00"
   },
   {
-    "objectID": "02_start-data.html#solution-1",
-    "href": "02_start-data.html#solution-1",
-    "title": "Starting with Data",
-    "section": "Solution",
-    "text": "Solution\n\nmemb_assoc &lt;- interviews$memb_assoc\n\n\n## Rename levels\nmemb_assoc &lt;- fct_recode(memb_assoc, No = \"no\",\n                         Undetermined = \"undetermined\", Yes = \"yes\")\n## Reorder levels. Note we need to use the new level names.\nmemb_assoc &lt;- factor(memb_assoc, levels = c(\"No\", \"Yes\", \"Undetermined\"))\nplot(memb_assoc)"
+    "objectID": "04_data-viz.html#exercise-2-solution",
+    "href": "04_data-viz.html#exercise-2-solution",
+    "title": "Data Visualisation with ggplot2",
+    "section": "Exercise 2: Solution",
+    "text": "Exercise 2: Solution\n\ninterviews_plotting %&gt;%\n  ggplot(aes(x = respondent_wall_type, y = rooms)) +\n  geom_violin() +\n  geom_jitter(alpha = 0.5, color = \"tomato\")"
   },
   {
-    "objectID": "02_start-data.html#questions",
-    "href": "02_start-data.html#questions",
-    "title": "Starting with Data",
-    "section": "Questions",
-    "text": "Questions\nSee if you can answer these questions\n\nWhat is a data.frame?\nHow can I read a complete csv file into R?\nHow can I get basic summary information about my dataset?\nHow can I change the way R treats strings in my dataset?\nWhy would I want strings to be treated differently?\nHow are dates represented in R and how can I change the format?"
+    "objectID": "04_data-viz.html#exercise-3",
+    "href": "04_data-viz.html#exercise-3",
+    "title": "Data Visualisation with ggplot2",
+    "section": "Exercise 3",
+    "text": "Exercise 3\n⏰ 8 mins\nCreate a bar plot showing the proportion of respondents in each village who are or are not part of an irrigation association (memb_assoc).\nInclude only respondents who answered that question in the calculations and plot.\nWhich village had the lowest proportion of respondents in an irrigation association?\n −+ 08:00"
+  },
+  {
+    "objectID": "04_data-viz.html#exercise-3-1",
+    "href": "04_data-viz.html#exercise-3-1",
+    "title": "Data Visualisation with ggplot2",
+    "section": "Exercise 3",
+    "text": "Exercise 3\n⏰ 8 mins\nCreate a bar plot showing the proportion of respondents in each village who are or are not part of an irrigation association (memb_assoc).\nInclude only respondents who answered that question in the calculations and plot.\nWhich village had the lowest proportion of respondents in an irrigation association?\n −+ 08:00 \nHint\n\npercent_memb_assoc &lt;- interviews_plotting %&gt;%\n  filter(!is.na(memb_assoc)) %&gt;%\n  count(village, memb_assoc) %&gt;%\n  group_by(village) %&gt;%\n  mutate(percent = (n / sum(n)) * 100) %&gt;%\n  ungroup()"
+  },
+  {
+    "objectID": "04_data-viz.html#exercise-3-solution",
+    "href": "04_data-viz.html#exercise-3-solution",
+    "title": "Data Visualisation with ggplot2",
+    "section": "Exercise 3: Solution",
+    "text": "Exercise 3: Solution\n\npercent_memb_assoc &lt;- interviews_plotting %&gt;%\n  filter(!is.na(memb_assoc)) %&gt;%\n  count(village, memb_assoc) %&gt;%\n  group_by(village) %&gt;%\n  mutate(percent = (n / sum(n)) * 100) %&gt;%\n  ungroup()\n\npercent_memb_assoc %&gt;%\n   ggplot(aes(x = village, y = percent, fill = memb_assoc)) +\n    geom_bar(stat = \"identity\", position = \"dodge\")"
+  },
+  {
+    "objectID": "04_data-viz.html#exercise-4",
+    "href": "04_data-viz.html#exercise-4",
+    "title": "Data Visualisation with ggplot2",
+    "section": "Exercise 4",
+    "text": "Exercise 4\n⏰ 4 mins\nExperiment with at least two different themes. Build the previous plot using each of those themes.\nWhich do you like best?\n −+ 04:00 \n\nHint\n\n\ntheme_minimal\ntheme_void\ntheme_classic\n\ntheme_dark\ntheme_grey\ntheme_light"
+  },
+  {
+    "objectID": "04_data-viz.html#exercise-4-solution",
+    "href": "04_data-viz.html#exercise-4-solution",
+    "title": "Data Visualisation with ggplot2",
+    "section": "Exercise 4: Solution",
+    "text": "Exercise 4: Solution\n\n\npercent_items %&gt;%\n    ggplot(aes(x = village, y = percent)) +\n    geom_bar(stat = \"identity\", position = \"dodge\") +\n    facet_wrap(~ items) +\n    theme_bw() +\n    theme(panel.grid = element_blank())\n\n\n\n\n\n\n\n\n\n\n\n\nGIPHY"
   }
 ]
