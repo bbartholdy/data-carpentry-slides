@@ -183,7 +183,7 @@ What other kinds of plots might you use to show this type of data?
 
 ## Exercise 1: Solution {.inverse .smaller}
 
-```{r exercise-2-setup, echo=FALSE}
+```{r echo=FALSE}
 #| label: setup-exercise2
 #| include: false
 percent_wall_type <- interviews_plotting %>%
