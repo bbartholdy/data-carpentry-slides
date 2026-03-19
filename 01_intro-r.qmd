@@ -42,6 +42,13 @@ Because it's **FREE** and open source and works with scripts, it's great for rep
 
 Did I mention **FREE**?
 
+. . .
+
+Lots of active package development!
+
+::: {r-stack}
+![howarddo2208.github.io](https://howarddo2208.github.io/assets/02-repository-comparison.png#center){.fragment width="800"}
+:::
 
 ## Ok... So why RStudio? {.center}
 

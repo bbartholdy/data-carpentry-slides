@@ -171,7 +171,7 @@ More artwork by [Allison Horst](https://allisonhorst.com)
 
 Create a new code chunk with the label `fig-rooms-scatter`.
 
-Create a scatter plot of `rooms` by `village` with the `respondant_wall_type`
+Create a scatter plot of `rooms` by `village` with the `respondent_wall_type`
 showing in different colours. 
 
 Does this seem like a good way to display the relationship between these variables?
@@ -205,7 +205,7 @@ interviews_plotting %>%
     ggplot(aes(x = village, y = rooms, colour = respondent_wall_type)) +
     geom_point() +
     theme_classic() +
-    scale_fill_viridis_d() # add colourblind-friendly palette
+    scale_colour_viridis_d() # add colourblind-friendly palette
 ```
 
 ## `geom_jitter`
@@ -217,7 +217,7 @@ interviews_plotting %>%
     ggplot(aes(x = village, y = rooms, colour = respondent_wall_type)) +
     geom_jitter(width = 0.2, height = 0.2) +
     theme_classic() +
-    scale_fill_viridis_d() # add colourblind-friendly palette
+    scale_colour_viridis_d() # add colourblind-friendly palette
 ```
 
 
