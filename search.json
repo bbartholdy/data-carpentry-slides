@@ -1,26 +1,5 @@
 [
   {
-    "objectID": "05_quarto.html#what-is-quarto",
-    "href": "05_quarto.html#what-is-quarto",
-    "title": "Getting Started with Quarto",
-    "section": "What is Quarto?",
-    "text": "What is Quarto?\nQuarto is a free, open-source scientific and tecnical publishing system.\nQuarto allows you to seamlessly combine executable R code, its output, and text in a single document.\nThese documents can be converted to multiple static and dynamic output formats, including PDF (.pdf), Word (.docx), and HTML (.html).\nThe benefit of a well-prepared Quarto document is full reproducibility.\n\nArtwork by @allison_horst"
-  },
-  {
-    "objectID": "05_quarto.html#why-quarto",
-    "href": "05_quarto.html#why-quarto",
-    "title": "Getting Started with Quarto",
-    "section": "Why Quarto?",
-    "text": "Why Quarto?\nFull reproducibility also means\n\nflexibility to add data and recompile\nno need to change all occurrences in a document\neasily fix mistakes made during analysis…\n\n\nArtwork by @allison_horst"
-  },
-  {
-    "objectID": "05_quarto.html#exercise-1",
-    "href": "05_quarto.html#exercise-1",
-    "title": "Getting Started with Quarto",
-    "section": "Exercise 1",
-    "text": "Exercise 1\n⏰ 4 mins\nPlay around with the different options in the chunk with the code for the table, and re-Render to see what each option does to the output.\nWhat happens if you use eval: false and echo: false?\nWhat is the difference between this and include: false?\n −+ 04:00 \n\nSolution\nCreate a chunk with eval: false, echo: false\nthen create another chunk with include: false to compare.\neval: false, echo: false will neither run the code in the chunk, nor show the code in the rendered document. The code chunk essentially doesn’t exist in the rendered document…\n…whereas include: false will run the code and store the output for later use.\nSee a comprehensive list of chunk options here"
-  },
-  {
     "objectID": "04_data-viz.html#why-ggplot2",
     "href": "04_data-viz.html#why-ggplot2",
     "title": "Data Visualisation with ggplot2",
@@ -46,14 +25,14 @@
     "href": "04_data-viz.html#exercise-1",
     "title": "Data Visualisation with ggplot2",
     "section": "Exercise 1",
-    "text": "Exercise 1\n⏰ 6 mins\nCreate a new code chunk with the label fig-rooms-scatter.\nCreate a scatter plot of rooms by village with the respondant_wall_type showing in different colours.\nDoes this seem like a good way to display the relationship between these variables?\nWhat other kinds of plots might you use to show this type of data?\n −+ 06:00"
+    "text": "Exercise 1\n⏰ 6 mins\nCreate a new code chunk with the label fig-rooms-scatter.\nCreate a scatter plot of rooms by village with the respondent_wall_type showing in different colours.\nDoes this seem like a good way to display the relationship between these variables?\nWhat other kinds of plots might you use to show this type of data?"
   },
   {
     "objectID": "04_data-viz.html#exercise-1-solution",
     "href": "04_data-viz.html#exercise-1-solution",
     "title": "Data Visualisation with ggplot2",
     "section": "Exercise 1: Solution",
-    "text": "Exercise 1: Solution\n\ngeom_pointgeom_jitter\n\n\n\ninterviews_plotting %&gt;%\n    ggplot(aes(x = village, y = rooms, colour = respondent_wall_type)) +\n    geom_point() +\n    theme_classic() +\n    scale_fill_viridis_d() # add colourblind-friendly palette\n\n\n\n\n\n\n\n\n\n\n\ninterviews_plotting %&gt;%\n    ggplot(aes(x = village, y = rooms, colour = respondent_wall_type)) +\n    geom_jitter(width = 0.2, height = 0.2) +\n    theme_classic() +\n    scale_fill_viridis_d() # add colourblind-friendly palette"
+    "text": "Exercise 1: Solution\n\ngeom_pointgeom_jitter\n\n\n\ninterviews_plotting %&gt;%\n    ggplot(aes(x = village, y = rooms, colour = respondent_wall_type)) +\n    geom_point() +\n    theme_classic() +\n    scale_colour_viridis_d() # add colourblind-friendly palette\n\n\n\n\n\n\n\n\n\n\n\ninterviews_plotting %&gt;%\n    ggplot(aes(x = village, y = rooms, colour = respondent_wall_type)) +\n    geom_jitter(width = 0.2, height = 0.2) +\n    theme_classic() +\n    scale_colour_viridis_d() # add colourblind-friendly palette"
   },
   {
     "objectID": "04_data-viz.html#captioning",
@@ -67,7 +46,7 @@
     "href": "04_data-viz.html#exercise-2",
     "title": "Data Visualisation with ggplot2",
     "section": "Exercise 2",
-    "text": "Exercise 2\n⏰ 4 mins\nBoxplots are useful summaries, but hide the shape of the distribution. For example, if the distribution is bimodal, we would not see it in a boxplot.\nReplace the box plot with a violin plot\nsee geom_violin()\n −+ 04:00"
+    "text": "Exercise 2\n⏰ 4 mins\nBoxplots are useful summaries, but hide the shape of the distribution. For example, if the distribution is bimodal, we would not see it in a boxplot.\nReplace the box plot with a violin plot\nsee geom_violin()"
   },
   {
     "objectID": "04_data-viz.html#exercise-2-solution",
@@ -81,14 +60,14 @@
     "href": "04_data-viz.html#exercise-3",
     "title": "Data Visualisation with ggplot2",
     "section": "Exercise 3",
-    "text": "Exercise 3\n⏰ 8 mins\nCreate a bar plot showing the proportion of respondents in each village who are or are not part of an irrigation association (memb_assoc).\nInclude only respondents who answered that question in the calculations and plot.\nWhich village had the lowest proportion of respondents in an irrigation association?\n −+ 08:00"
+    "text": "Exercise 3\n⏰ 8 mins\nCreate a bar plot showing the proportion of respondents in each village who are or are not part of an irrigation association (memb_assoc).\nInclude only respondents who answered that question in the calculations and plot.\nWhich village had the lowest proportion of respondents in an irrigation association?"
   },
   {
     "objectID": "04_data-viz.html#exercise-3-1",
     "href": "04_data-viz.html#exercise-3-1",
     "title": "Data Visualisation with ggplot2",
     "section": "Exercise 3",
-    "text": "Exercise 3\n⏰ 8 mins\nCreate a bar plot showing the proportion of respondents in each village who are or are not part of an irrigation association (memb_assoc).\nInclude only respondents who answered that question in the calculations and plot.\nWhich village had the lowest proportion of respondents in an irrigation association?\n −+ 08:00 \nHint\n\npercent_memb_assoc &lt;- interviews_plotting %&gt;%\n  filter(!is.na(memb_assoc)) %&gt;%\n  count(village, memb_assoc) %&gt;%\n  group_by(village) %&gt;%\n  mutate(percent = (n / sum(n)) * 100) %&gt;%\n  ungroup()"
+    "text": "Exercise 3\n⏰ 8 mins\nCreate a bar plot showing the proportion of respondents in each village who are or are not part of an irrigation association (memb_assoc).\nInclude only respondents who answered that question in the calculations and plot.\nWhich village had the lowest proportion of respondents in an irrigation association?\n\nHint\n\npercent_memb_assoc &lt;- interviews_plotting %&gt;%\n  filter(!is.na(memb_assoc)) %&gt;%\n  count(village, memb_assoc) %&gt;%\n  group_by(village) %&gt;%\n  mutate(percent = (n / sum(n)) * 100) %&gt;%\n  ungroup()"
   },
   {
     "objectID": "04_data-viz.html#exercise-3-solution",
@@ -102,7 +81,7 @@
     "href": "04_data-viz.html#exercise-4",
     "title": "Data Visualisation with ggplot2",
     "section": "Exercise 4",
-    "text": "Exercise 4\n⏰ 4 mins\nExperiment with at least two different themes. Build the previous plot using each of those themes.\nWhich do you like best?\n −+ 04:00 \n\nHint\n\n\ntheme_minimal\ntheme_void\ntheme_classic\n\ntheme_dark\ntheme_grey\ntheme_light"
+    "text": "Exercise 4\n⏰ 4 mins\nExperiment with at least two different themes. Build the previous plot using each of those themes.\nWhich do you like best?\n\n\nHint\n\n\ntheme_minimal\ntheme_void\ntheme_classic\n\ntheme_dark\ntheme_grey\ntheme_light"
   },
   {
     "objectID": "04_data-viz.html#exercise-4-solution",
@@ -110,5 +89,26 @@
     "title": "Data Visualisation with ggplot2",
     "section": "Exercise 4: Solution",
     "text": "Exercise 4: Solution\n\n\npercent_items %&gt;%\n    ggplot(aes(x = village, y = percent)) +\n    geom_bar(stat = \"identity\", position = \"dodge\") +\n    facet_wrap(~ items) +\n    theme_bw() +\n    theme(panel.grid = element_blank())\n\n\n\n\n\n\n\n\n\n\n\n\nGIPHY"
+  },
+  {
+    "objectID": "05_quarto.html#what-is-quarto",
+    "href": "05_quarto.html#what-is-quarto",
+    "title": "Getting Started with Quarto",
+    "section": "What is Quarto?",
+    "text": "What is Quarto?\nQuarto is a free, open-source scientific and technical publishing system.\nQuarto allows you to seamlessly combine executable R code, its output, and text in a single document.\nThese documents can be converted to multiple static and dynamic output formats, including PDF (.pdf), Word (.docx), and HTML (.html).\nThe benefit of a well-prepared Quarto document is full reproducibility.\n\nArtwork by @allison_horst"
+  },
+  {
+    "objectID": "05_quarto.html#why-quarto",
+    "href": "05_quarto.html#why-quarto",
+    "title": "Getting Started with Quarto",
+    "section": "Why Quarto?",
+    "text": "Why Quarto?\nFull reproducibility also means\n\nflexibility to add data and recompile\nno need to change all occurrences in a document\neasily fix mistakes made during analysis…\n\n\nArtwork by @allison_horst"
+  },
+  {
+    "objectID": "05_quarto.html#exercise-1",
+    "href": "05_quarto.html#exercise-1",
+    "title": "Getting Started with Quarto",
+    "section": "Exercise 1",
+    "text": "Exercise 1\n⏰ 4 mins\nPlay around with the different options in the chunk with the code for the table, and re-Render to see what each option does to the output.\nWhat happens if you use eval: false and echo: false?\nWhat is the difference between this and include: false?\n\n\nSolution\nCreate a chunk with eval: false, echo: false\nthen create another chunk with include: false to compare.\neval: false, echo: false will neither run the code in the chunk, nor show the code in the rendered document. The code chunk essentially doesn’t exist in the rendered document…\n…whereas include: false will run the code and store the output for later use.\nSee a comprehensive list of chunk options here"
   }
 ]

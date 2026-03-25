@@ -6,10 +6,10 @@
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.8.24">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.9.36">
 
-  <meta name="dcterms.date" content="2025-10-09">
+  <meta name="dcterms.date" content="2026-03-26">
   <title>Getting Started with Quarto</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -17,6 +17,9 @@
   <link rel="stylesheet" href="site_libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="site_libs/revealjs/dist/reveal.css">
   <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -29,7 +32,7 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-8286f5c8f36b1c8118bfcfce534c100f.css">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-0ac75443d880f2afb252f2f9de54965d.css">
   <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -121,8 +124,8 @@
       margin-right: 0; 
     }
   </style>
-  <link href="site_libs/countdown-0.4.0/countdown.css" rel="stylesheet">
-  <script src="site_libs/countdown-0.4.0/countdown.js"></script>
+  <link href="site_libs/countdown-0.6.0/countdown.css" rel="stylesheet">
+  <script src="site_libs/countdown-0.6.0/countdown.js"></script>
   <link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
   <script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
 </head>
@@ -137,11 +140,11 @@
 <div class="quarto-title-authors">
 </div>
 
-  <p class="date">2025-10-09</p>
+  <p class="date">2026-03-26</p>
 </section>
 <section id="what-is-quarto" class="slide level2 smaller">
 <h2>What is Quarto?</h2>
-<p>Quarto is a free, open-source scientific and tecnical publishing system.</p>
+<p>Quarto is a free, open-source scientific and technical publishing system.</p>
 <p>Quarto allows you to <strong>seamlessly combine executable R code, its output, and text</strong> in a single document.</p>
 <p>These documents <strong>can be converted to multiple static and dynamic output formats</strong>, including PDF (.pdf), Word (.docx), and HTML (.html).</p>
 <p>The benefit of a well-prepared Quarto document is <strong>full reproducibility</strong>.</p>
@@ -168,7 +171,7 @@
 <p>Play around with the different options in the chunk with the code for the table, and re-Render to see what each option does to the output.</p>
 <p>What happens if you use <code>eval: false</code> and <code>echo: false</code>?</p>
 <p>What is the difference between this and <code>include: false</code>?</p>
-<p></p><div class="countdown" id="timer_1d0c904d" data-update-every="1" tabindex="0" style="right:0;bottom:0;"> <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div> <code class="countdown-time"><span class="countdown-digits minutes">04</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code> </div><p></p>
+<p><countdown-timer class="countdown" id="timer_d28a4e8e" minutes="4" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;--countdown-color-running-background:lightgreen;--countdown-color-running-text:black;--countdown-color-finished-background:red;--countdown-color-finished-text:grey30;"></countdown-timer></p>
 <div class="fragment">
 <h3 class="inverse" id="solution">Solution</h3>
 <p>Create a chunk with <code>eval: false, echo: false</code></p>
