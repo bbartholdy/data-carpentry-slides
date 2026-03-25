@@ -1,7 +1,7 @@
 on:
     workflow_dispatch:
     push:
-      branches: $GITHUB_REF_NAME 
+      branches: 2603-DC-LDEV
   
 name: Quarto Publish
   
